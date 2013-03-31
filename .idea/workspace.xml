@@ -156,7 +156,12 @@
     <option name="TOOL_WINDOW_CUSTOM_FILTER" value="litecoin" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" name="Default" comment="" />
+    <list default="true" id="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/market-feature-graphic.png" afterPath="$PROJECT_DIR$/market/market-feature-graphic.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/market-promo-graphic.png" afterPath="$PROJECT_DIR$/market/market-promo-graphic.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/screenshot.png" afterPath="$PROJECT_DIR$/market/screenshot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/market/screenshot2.png" afterPath="$PROJECT_DIR$/market/screenshot2.png" />
+    </list>
     <ignored path="litecoin-wallet.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364743377216" ignored="false" />
@@ -362,7 +367,7 @@
       <file leaf-file-name="BlockchainServiceImpl.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/service/BlockchainServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="53" selection-start="3206" selection-end="3206" vertical-scroll-proportion="0.056285176">
+            <state line="81" column="53" selection-start="3206" selection-end="3206" vertical-scroll-proportion="0.03717472">
               <folding />
             </state>
           </provider>
@@ -755,8 +760,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="63" y="40" width="1823" height="979" extended-state="1" />
-    <editor active="false" />
+    <frame x="63" y="40" width="1823" height="979" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -769,7 +774,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893157" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32893157" sideWeight="0.97952217" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893157" sideWeight="0.97952217" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -958,7 +963,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/service/BlockchainServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="53" selection-start="3206" selection-end="3206" vertical-scroll-proportion="0.056285176">
+        <state line="81" column="53" selection-start="3206" selection-end="3206" vertical-scroll-proportion="0.03717472">
           <folding />
         </state>
       </provider>
