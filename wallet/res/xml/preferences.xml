@@ -60,9 +60,9 @@
 			android:defaultValue="8"
 			android:entries="@array/preferences_precision_labels"
 			android:entryValues="@array/preferences_precision_values"
-			android:key="btc_precision"
+			android:key="ltc_precision"
 			android:summary="This does not affect computations. It is used for saving view space only."
-			android:title="Precision of Bitcoin values" />
+			android:title="Precision of Litecoin values" />
 
 		<CheckBoxPreference
 			android:defaultValue="true"

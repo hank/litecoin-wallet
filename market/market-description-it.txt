@@ -26,4 +26,4 @@ Licenza: GPLv3
 Usalo a tuo rischio e pericolo!
 
 --
-BTC bitcoin wallet blockchain bitcoinandroid androidbitcoin Geldbörse Кошелёк mobile payment
+LTC bitcoin wallet blockchain bitcoinandroid androidbitcoin Geldbörse Кошелёк mobile payment

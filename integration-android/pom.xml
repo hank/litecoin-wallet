@@ -6,10 +6,10 @@
 
 	<artifactId>integration-android</artifactId>
 	<version>1.0</version>
-	<name>Bitcoin Integration for Android</name>
+	<name>Litecoin Integration for Android</name>
 
 	<parent>
-		<groupId>de.schildbach.wallet</groupId>
+		<groupId>de.schildbach.wallet.litecoin</groupId>
 		<artifactId>base</artifactId>
 		<version>1</version>
 	</parent>

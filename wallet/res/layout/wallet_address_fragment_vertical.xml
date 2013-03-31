@@ -13,7 +13,7 @@
 		android:textSize="@dimen/font_size_small" />
 
 	<FrameLayout
-		android:id="@+id/bitcoin_address_button"
+		android:id="@+id/litecoin_address_button"
 		style="@style/My.Widget.Button.Borderless"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
 		android:foregroundGravity="bottom|right" >
 
 		<TextView
-			android:id="@+id/bitcoin_address_label"
+			android:id="@+id/litecoin_address_label"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textSize="@dimen/font_size_normal" />
@@ -35,7 +35,7 @@
 		android:layout_weight="1" />
 
 	<ImageView
-		android:id="@+id/bitcoin_address_qr"
+		android:id="@+id/litecoin_address_qr"
 		android:layout_width="@dimen/wallet_address_qr_size"
 		android:layout_height="@dimen/wallet_address_qr_size"
 		android:layout_gravity="bottom|center_horizontal"

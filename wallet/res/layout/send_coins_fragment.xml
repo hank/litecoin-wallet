@@ -65,7 +65,7 @@
 		android:textSize="@dimen/font_size_small"
 		android:textStyle="bold" />
 
-	<de.schildbach.wallet.ui.CurrencyAmountView
+	<de.schildbach.wallet.litecoin.ui.CurrencyAmountView
 		android:id="@+id/send_coins_amount"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
 			android:imeOptions="flagNoExtractUi"
 			android:textSize="@dimen/font_size_xlarge"
 			tools:ignore="TextFields" />
-	</de.schildbach.wallet.ui.CurrencyAmountView>
+	</de.schildbach.wallet.litecoin.ui.CurrencyAmountView>
 
 	<TextView
 		android:layout_width="match_parent"
@@ -90,7 +90,7 @@
 		android:textSize="@dimen/font_size_small"
 		android:textStyle="bold" />
 
-	<de.schildbach.wallet.ui.CurrencyAmountView
+	<de.schildbach.wallet.litecoin.ui.CurrencyAmountView
 		android:id="@+id/send_coins_fee"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
 			android:imeOptions="flagNoExtractUi"
 			android:textSize="@dimen/font_size_xlarge"
 			tools:ignore="TextFields" />
-	</de.schildbach.wallet.ui.CurrencyAmountView>
+	</de.schildbach.wallet.litecoin.ui.CurrencyAmountView>
 
 	<!-- stretch dummy -->
 

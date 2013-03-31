@@ -7,10 +7,10 @@
 	<artifactId>sample-integration-android</artifactId>
 	<packaging>apk</packaging>
 	<version>1.0</version>
-	<name>Sample for Bitcoin Integration for Android</name>
+	<name>Sample for Litecoin Integration for Android</name>
 
 	<parent>
-		<groupId>de.schildbach.wallet</groupId>
+		<groupId>de.schildbach.wallet.litecoin</groupId>
 		<artifactId>base</artifactId>
 		<version>1</version>
 	</parent>
@@ -25,9 +25,9 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- de.schildbach.wallet.integration.android.* -->
+		<!-- de.schildbach.wallet.litecoin.integration.android.* -->
 		<dependency>
-			<groupId>de.schildbach.wallet</groupId>
+			<groupId>de.schildbach.wallet.litecoin</groupId>
 			<artifactId>integration-android</artifactId>
 			<version>1.0</version>
 		</dependency>

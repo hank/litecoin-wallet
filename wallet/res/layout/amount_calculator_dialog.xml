@@ -5,8 +5,8 @@
 	android:layout_height="wrap_content"
 	android:orientation="vertical" >
 
-	<de.schildbach.wallet.ui.CurrencyAmountView
-		android:id="@+id/amount_calculator_row_btc"
+	<de.schildbach.wallet.litecoin.ui.CurrencyAmountView
+		android:id="@+id/amount_calculator_row_ltc"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="12dp"
@@ -19,9 +19,9 @@
 			android:imeOptions="actionDone|flagNoExtractUi"
 			android:textSize="@dimen/font_size_xlarge"
 			tools:ignore="TextFields" />
-	</de.schildbach.wallet.ui.CurrencyAmountView>
+	</de.schildbach.wallet.litecoin.ui.CurrencyAmountView>
 
-	<de.schildbach.wallet.ui.CurrencyAmountView
+	<de.schildbach.wallet.litecoin.ui.CurrencyAmountView
 		android:id="@+id/amount_calculator_row_local"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
 			android:imeOptions="actionDone|flagNoExtractUi"
 			android:textSize="@dimen/font_size_xlarge"
 			tools:ignore="TextFields" />
-	</de.schildbach.wallet.ui.CurrencyAmountView>
+	</de.schildbach.wallet.litecoin.ui.CurrencyAmountView>
 
 	<TextView
 		android:id="@+id/amount_calculator_rate"

@@ -26,4 +26,4 @@ https://code.google.com/p/bitcoin-wallet/
 Используйте на свой страх и риск!
 
 --
-BTC Bitcoin Wallet blockchain bitcoinandroid androidbitcoin Geldbörse Кошелёк mobile payment
+LTC Bitcoin Wallet blockchain bitcoinandroid androidbitcoin Geldbörse Кошелёк mobile payment

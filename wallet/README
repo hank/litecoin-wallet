@@ -15,7 +15,7 @@ Your wallet and your private keys are stored in app internal storage:
 	Wallet for testnet
 
 The wallet file format is not compatible to wallet.dat (Satoshi client). Rather, it uses a custom protobuf format
-which should be compatible between clients using bitcoinj.
+which should be compatible between clients using litecoinj.
 
 Certain actions cause rolling backups of your private keys to app internal storage:
 
@@ -27,10 +27,10 @@ Certain actions cause rolling backups of your private keys to app internal stora
 
 Private keys can be exported to and imported from external storage:
 
-/sdcard/Download/bitcoin-wallet-keys-<yyyy-MM-dd>
+/sdcard/Download/litecoin-wallet-keys-<yyyy-MM-dd>
 	Export of private keys for prodnet
 
-/sdcard/Download/bitcoin-wallet-keys-testnet-<yyyy-MM-dd>
+/sdcard/Download/litecoin-wallet-keys-testnet-<yyyy-MM-dd>
 	Export of private keys for testnet
 
 The export file is encrypted using your chosen password. You can OpenSSL to decrypt:
@@ -68,17 +68,17 @@ and unpack it to your workspace directory. Switch to that Android SDK directory,
 
 to download the necessary API level.
 
-Next, you need to build bitcoinj. In your workspace, use
+Next, you need to build litecoinj. In your workspace, use
 
-	git clone -b release-0.7 https://code.google.com/p/bitcoinj/ bitcoinj
-	cd bitcoinj
+	git clone -b release-0.7 https://code.google.com/p/litecoinj/ litecoinj
+	cd litecoinj
 	mvn clean install
 
-Finally, you can build Bitcoin Wallet and sign it with your development key. Again in your workspace,
+Finally, you can build Litecoin Wallet and sign it with your development key. Again in your workspace,
 use
 
-	git clone https://code.google.com/p/bitcoin-wallet/ bitcoin-wallet
-	cd bitcoin-wallet
+	git clone https://code.google.com/p/litecoin-wallet/ litecoin-wallet
+	cd litecoin-wallet
 	mvn clean install -Dandroid.sdk.path=<path to your android sdk>
 
 To upload the app to your Android device, use
@@ -94,7 +94,7 @@ Make sure you've got Eclipse 3.7 (Indigo) with ADT 20 installed.
 
 Use Git to check out the project to your workspace:
 
-  git clone https://code.google.com/p/bitcoin-wallet/ bitcoin-wallet
+  git clone https://code.google.com/p/litecoin-wallet/ litecoin-wallet
 
 Change to that directory.
 
@@ -115,7 +115,7 @@ If you see loads of "should be tagged with @Override" errors, set
 
 NFC (Near field communication)
 
-Bitcoin Wallet supports reading Bitcoin requests via NFC, either from a passive NFC tag or from
+Litecoin Wallet supports reading Litecoin requests via NFC, either from a passive NFC tag or from
 another NFC capable Android device that is requesting coins.
 
 For this to work, just enable NFC in your phone and hold your phone to the tag or device (with
@@ -129,31 +129,31 @@ Instructions for preparing an NFC tag with your address:
 
 - Some tags have less than 50 bytes capacity, those won't work. 1 KB tags recommended.
 
-- The tag needs to contain a Bitcoin URI. You can construct one with the "Request coins" dialog,
+- The tag needs to contain a Litecoin URI. You can construct one with the "Request coins" dialog,
   then share with messaging or email. You can also construct the URI manually. Example for Prodnet:
-  bitcoin:1G2Y2jP5YFZ5RGk2PXaeWwbeA5y1ZtFhoL
+  litecoin:1G2Y2jP5YFZ5RGk2PXaeWwbeA5y1ZtFhoL
 
 - The type of the message needs to be URI or URL (not Text).
 
 - If you put your tag at a public place, don't forget to enable write protect. Otherwise, someone
-  could overwrite the tag with his own Bitcoin address.
+  could overwrite the tag with his own Litecoin address.
 
 
 EXCHANGE RATES
 
-Bitcoin Wallet reads this feed from "bitcoin charts" for getting exchange rates:
+Litecoin Wallet reads this feed from "litecoin charts" for getting exchange rates:
 
-	http://bitcoincharts.com/t/weighted_prices.json
+	http://litecoincharts.com/t/weighted_prices.json
 
 The feed is described on this page (see Weighted Prices):
 
-	http://bitcoincharts.com/about/markets-api/
+	http://litecoincharts.com/about/markets-api/
 
 I chose this feed because it is not dependent on a single exchange. However, you should keep in
 mind it's always a 24h average (falling back to 7d or even 30d if no trade occurred for a long
 time).
 
-If Bitcoincharts is not available, the feed from "Blockchain" is fetched instead:
+If Litecoincharts is not available, the feed from "Blockchain" is fetched instead:
 
 	https://blockchain.info/ticker
 
@@ -162,8 +162,8 @@ The feed is described here:
 	https://blockchain.info/api/exchange_rates_api
 
 
-BITCOINJ
+LITECOINJ
 
-Bitcoin Wallet uses bitcoinj for Bitcoin specific logic:
+Litecoin Wallet uses litecoinj for Litecoin specific logic:
 
-http://code.google.com/p/bitcoinj/
+http://code.google.com/p/litecoinj/

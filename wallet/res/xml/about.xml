@@ -14,7 +14,7 @@
 		<Preference
 			android:key="about_source"
 			android:title="Source Code" />
-		<Preference android:key="about_credits_bitcoinj" />
+		<Preference android:key="about_credits_litecoinj" />
 		<Preference
 			android:key="about_credits_zxing"
 			android:title="@string/about_credits_zxing_title" />
@@ -23,7 +23,7 @@
 			android:title="@string/about_credits_icon_title" />
 		<Preference
 			android:key="about_author_twitter"
-			android:summary="\@bitcoin_wallet"
+			android:summary="\@litecoin_wallet"
 			android:title="@string/about_author_twitter_title" />
 		<Preference
 			android:key="about_author_googleplus"

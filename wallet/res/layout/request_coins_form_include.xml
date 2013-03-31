@@ -15,7 +15,7 @@
 		android:textSize="@dimen/font_size_normal"
 		android:textStyle="bold" />
 
-	<de.schildbach.wallet.ui.CurrencyAmountView
+	<de.schildbach.wallet.litecoin.ui.CurrencyAmountView
 		android:id="@+id/request_coins_amount"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
 			android:imeOptions="flagNoExtractUi"
 			android:textSize="@dimen/font_size_xlarge"
 			tools:ignore="TextFields" />
-	</de.schildbach.wallet.ui.CurrencyAmountView>
+	</de.schildbach.wallet.litecoin.ui.CurrencyAmountView>
 
 	<TextView
 		android:layout_width="match_parent"

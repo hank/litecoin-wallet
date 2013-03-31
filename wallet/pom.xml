@@ -6,11 +6,11 @@
 
 	<artifactId>wallet</artifactId>
 	<packaging>apk</packaging>
-	<version>2.48-test</version>
-	<name>Bitcoin Wallet</name>
+	<version>1.00-test</version>
+	<name>Litecoin Wallet</name>
 
 	<parent>
-		<groupId>de.schildbach.wallet</groupId>
+		<groupId>de.schildbach.wallet.litecoin</groupId>
 		<artifactId>base</artifactId>
 		<version>1</version>
 	</parent>
@@ -49,16 +49,16 @@
 			<type>apklib</type>
 		</dependency>
 
-		<!-- com.google.bitcoin.* -->
+		<!-- com.google.litecoin.* -->
 		<dependency>
 			<groupId>com.google</groupId>
-			<artifactId>bitcoinj</artifactId>
-			<version>0.7.3</version>
+			<artifactId>litecoinj</artifactId>
+			<version>0.8-SNAPSHOT</version>
 		</dependency>
 
-		<!-- de.schildbach.wallet.integration.android.* -->
+		<!-- de.schildbach.wallet.litecoin.integration.android.* -->
 		<dependency>
-			<groupId>de.schildbach.wallet</groupId>
+			<groupId>de.schildbach.wallet.litecoin</groupId>
 			<artifactId>integration-android</artifactId>
 			<version>1.0</version>
 		</dependency>

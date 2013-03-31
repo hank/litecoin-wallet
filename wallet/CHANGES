@@ -10,14 +10,14 @@
 2.46
 
 * bugfixes
-* based on bitcoinj 0.7.3
+* based on litecoinj 0.7.3
 
 2.45
 
 * new labs feature: block explorer
 * request coins from locally installed app
 * save memory and stack
-* based on bitcoinj 0.7.2
+* based on litecoinj 0.7.2
 
 2.44
 
@@ -31,11 +31,11 @@
 
 * fixed crash on Froyo (Android 2.2) devices
 * allow importing private keys from automatic backups
-* based on bitcoinj 0.7.1
+* based on litecoinj 0.7.1
 
 2.41
 
-* labs preference for setting bitcoin value precision
+* labs preference for setting litecoin value precision
 
 2.40
 
@@ -46,9 +46,9 @@
 * preference for showing the connectivity indicator
 * shortcut to request coins by long tapping on qr code
 * peer monitor shows more info
-* fallback for fetching exchange rates (bitcoincharts first, then blockchain)
+* fallback for fetching exchange rates (litecoincharts first, then blockchain)
 * lots of small improvements and bugfixes
-* based on bitcoinj 0.7
+* based on litecoinj 0.7
 
 2.39
 
@@ -57,7 +57,7 @@
 2.38
 
 * fixed testnet3 blockchain sync problem
-* based on bitcoinj 0.6.1
+* based on litecoinj 0.6.1
 
 2.37
 
@@ -108,7 +108,7 @@
 
 * proper handling of coinbase transactions
 * watch transaction propagation (build-up of confidence) when sending coins
-* based on bitcoinj 0.6
+* based on litecoinj 0.6
 * blockchain can be reset without exiting the app
 
 2.21
@@ -122,7 +122,7 @@
 2.19
 
 * bugfixes
-* based on BitCoinJ 0.5.2
+* based on LitecoinJ 0.5.2
 
 2.18
 
@@ -149,11 +149,11 @@
 2.13
 
 * bugfixes
-* based on BitCoinJ 0.5.1
+* based on LitecoinJ 0.5.1
 
 2.1
 
-* based on BitCoinJ 0.5.0
+* based on LitecoinJ 0.5.0
 * lots of UI work
 * changes how long the P2P network stays connected
 

@@ -27,7 +27,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import de.schildbach.wallet.integration.android.BitcoinIntegration;
+import de.schildbach.wallet.litecoin.integration.android.LitecoinIntegration;
 
 /**
  * @author Andreas Schildbach
@@ -54,7 +54,7 @@ public class SampleActivity extends Activity
 		{
 			public void onClick(final View v)
 			{
-				BitcoinIntegration.requestForResult(SampleActivity.this, REQUEST_CODE, DONATION_ADDRESS);
+				LitecoinIntegration.requestForResult(SampleActivity.this, REQUEST_CODE, DONATION_ADDRESS);
 			}
 		});
 
@@ -68,7 +68,7 @@ public class SampleActivity extends Activity
 		{
 			if (resultCode == Activity.RESULT_OK)
 			{
-				final String txHash = BitcoinIntegration.transactionHashFromResult(data);
+				final String txHash = LitecoinIntegration.transactionHashFromResult(data);
 				if (txHash != null)
 				{
 					final SpannableStringBuilder messageBuilder = new SpannableStringBuilder("Transaction hash:\n");

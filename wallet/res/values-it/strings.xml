@@ -5,49 +5,49 @@
 	<string name="toast_wallet_reset">Il portafoglio è stato reinizializzato,\noccorrerà del tempo per ripristinarlo</string>
 
 	<string name="blockchain_state_disclaimer">Usatela a vostro rischio e pericolo. Leggete i dettagli nelle &lt;u>note di sicurezza&lt;/u>.</string>
-	<string name="wallet_address_fragment_your">Il tuo indirizzo Bitcoin:</string>
-	<string name="wallet_address_fragment_clipboard_msg">Indirizzo Bitcoin copiato nella clipboard</string>
-	<string name="wallet_addresses_fragment_add_dialog_title">Aggiungi un indirizzo Bitcoin</string>
-	<string name="wallet_addresses_fragment_add_dialog_message">Gli indirizzi Bitcoin non possono essere cancellati. Ne vuoi aggiungere uno nuovo?</string>
+	<string name="wallet_address_fragment_your">Il tuo indirizzo Litecoin:</string>
+	<string name="wallet_address_fragment_clipboard_msg">Indirizzo Litecoin copiato nella clipboard</string>
+	<string name="wallet_addresses_fragment_add_dialog_title">Aggiungi un indirizzo Litecoin</string>
+	<string name="wallet_addresses_fragment_add_dialog_message">Gli indirizzi Litecoin non possono essere cancellati. Ne vuoi aggiungere uno nuovo?</string>
 	<string name="exchange_rates_fragment_empty_text">Impossibile acquisire quotazioni di cambio</string>
 	<string name="wallet_transactions_fragment_tab_received">Ricevuto</string>
 	<string name="wallet_transactions_fragment_tab_all">Entrambi</string>
 	<string name="wallet_transactions_fragment_tab_sent">Inviato</string>
-	<string name="wallet_transactions_fragment_empty_text_received">Nessun Bitcoin ancora ricevuto</string>
-	<string name="wallet_transactions_fragment_empty_text_sent">Nessun Bitcoin ancora inviato</string>
+	<string name="wallet_transactions_fragment_empty_text_received">Nessun Litecoin ancora ricevuto</string>
+	<string name="wallet_transactions_fragment_empty_text_sent">Nessun Litecoin ancora inviato</string>
 	<string name="wallet_options_safety">Note di sicurezza</string>
 	<string name="wallet_options_donate">Donazioni</string>
 	<string name="wallet_low_storage_dialog_title">Spazio di memorizzazione interno quasi esaurito!</string>
-	<string name="wallet_low_storage_dialog_msg">Bitcoin Wallet usa la memoria interna al dispositivo per memorizzare transazioni e blocchi.
-		Se lo spazio si esaurisce smetterà di funzionerà ed i tuoi Bitcoins potrebbero essere a rischio!\n\n
+	<string name="wallet_low_storage_dialog_msg">Litecoin Wallet usa la memoria interna al dispositivo per memorizzare transazioni e blocchi.
+		Se lo spazio si esaurisce smetterà di funzionerà ed i tuoi Litecoins potrebbero essere a rischio!\n\n
 		Vuoi aprire il gestore applicazioni per disinstallare applicazioni di cui potresti non aver bisogno?
 	</string>
 	<string name="wallet_low_storage_dialog_button_apps">Gestisci applicazioni</string>
 
-	<string name="send_coins_activity_title">Invia Bitcoins</string>
+	<string name="send_coins_activity_title">Invia Litecoins</string>
 	<string name="send_coins_fragment_receiving_address_label">Paga a</string>
 	<string name="send_coins_fragment_receiving_address_hint">inserisci indirizzo o nome</string>
-	<string name="send_coins_fragment_receiving_address_error">Indirizzo Bitcoin invalido!</string>
+	<string name="send_coins_fragment_receiving_address_error">Indirizzo Litecoin invalido!</string>
 	<string name="send_coins_fragment_available_label">Disponibili</string>
-	<string name="send_coins_fragment_pending">(%s BTC in attesa di conferma)</string>
+	<string name="send_coins_fragment_pending">(%s LTC in attesa di conferma)</string>
 	<string name="send_coins_fragment_amount_label">Importo da pagare</string>
 	<string name="send_coins_fragment_fee_label">Commissione</string>
 	<string name="send_coins_fragment_button_send">Invia</string>
 	<string name="send_coins_sending_msg">Invio in corso…</string>
 	<string name="send_coins_add_address_dialog_title">Il destinatario non è ancora presente in rubrica.\n\nVuoi aggiungerlo?</string>
 	<string name="send_coins_add_address_dialog_button_add">Aggiungi indirizzo</string>
-	<string name="send_coins_error_msg">"Problemi durante l'invio dei Bitcoins!"</string>
+	<string name="send_coins_error_msg">"Problemi durante l'invio dei Litecoins!"</string>
 
-	<string name="request_coins_activity_title">Richiedi Bitcoins</string>
+	<string name="request_coins_activity_title">Richiedi Litecoins</string>
 	<string name="request_coins_fragment_amount_label">Importo richiesto (opzionale)</string>
 	<string name="request_coins_fragment_qr_label">Fai rilevare questo codice QR al mittente:</string>
 	<string name="request_coins_fragment_nfc_enabled">Oppure tocca con un dispositivo NFC.</string>
-	<string name="request_coins_clipboard_msg">Richiesta Bitcoin copiata negli appunti</string>
-	<string name="request_coins_share_dialog_title">Condividi richiesta di Bitcoins…</string>
+	<string name="request_coins_clipboard_msg">Richiesta Litecoin copiata negli appunti</string>
+	<string name="request_coins_share_dialog_title">Condividi richiesta di Litecoins…</string>
 
 	<string name="address_book_activity_title">Rubrica</string>
 	<string name="address_book_empty_text">Nessun indirizzo in rubrica</string>
-	<string name="address_book_context_send_title">"Invia Bitcoins all'indirizzo"</string>
+	<string name="address_book_context_send_title">"Invia Litecoins all'indirizzo"</string>
 	<string name="address_book_context_edit_title">Modifica indirizzo</string>
 	<string name="address_book_context_remove_title">Rimuovi indirizzo</string>
 	<string name="address_book_context_show_qr_title">Mostra codice QR</string>
@@ -61,7 +61,7 @@
 
 	<string name="about_title">Informazioni</string>
 	<string name="about_license_title">Licenza</string>
-	<string name="about_credits_bitcoinj_title">Questa applicazione fa uso di bitcoinj %s</string>
+	<string name="about_credits_litecoinj_title">Questa applicazione fa uso di litecoinj %s</string>
 	<string name="about_credits_zxing_title">"Questa applicazione fa uso di 'zxing'"</string>
 	<string name="about_credits_icon_title">"Questa applicazione fa uso di una icona di 'bitboy'"</string>
 	<string name="about_author_twitter_title">"L'autore su Twitter"</string>
@@ -69,7 +69,7 @@
 	<string name="about_credits_market_app_title">"Pagina dell'Google Play"</string>
 	<string name="about_credits_market_publisher_title">"Altre applicazioni dell'autore"</string>
 
-	<string name="notification_coins_received_msg">Ricevuti %s BTC</string>
+	<string name="notification_coins_received_msg">Ricevuti %s LTC</string>
 	<string name="notification_peers_connected_msg">Connesso a %d peers</string>
 
 	<!-- generic buttons -->
@@ -79,7 +79,7 @@
 	<string name="button_add">Aggiungi</string>
 	<string name="button_delete">Cancella</string>
 	<string name="button_share">Condividi</string>
-	<string name="button_request_coins">Richiedi Bitcoins</string>
-	<string name="button_send_coins">Invia Bitcoins</string>
+	<string name="button_request_coins">Richiedi Litecoins</string>
+	<string name="button_send_coins">Invia Litecoins</string>
 
 </resources>

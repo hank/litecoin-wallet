@@ -15,10 +15,10 @@
 	<string name="blockchain_state_progress_problem_power">Synchronisation: Stromversorgungs-Problem</string>
 	<string name="blockchain_state_progress_problem_network">Synchronisation: Netzwerk-Problem</string>
 	<string name="blockchain_state_replaying">Blockchain-Replay ist in Gang.</string>
-	<string name="wallet_address_fragment_your">Deine Bitcoin-Adresse:</string>
-	<string name="wallet_address_fragment_clipboard_msg">Bitcoin-Adresse ins Clipboard kopiert</string>
-	<string name="wallet_addresses_fragment_add_dialog_title">Bitcoin-Adresse hinzufügen</string>
-	<string name="wallet_addresses_fragment_add_dialog_message">Bitcoin-Adressen können nicht gelöscht werden. Möchtest Du eine neue Adresse zu Deinem Wallet hinzufügen?</string>
+	<string name="wallet_address_fragment_your">Deine Litecoin-Adresse:</string>
+	<string name="wallet_address_fragment_clipboard_msg">Litecoin-Adresse ins Clipboard kopiert</string>
+	<string name="wallet_addresses_fragment_add_dialog_title">Litecoin-Adresse hinzufügen</string>
+	<string name="wallet_addresses_fragment_add_dialog_message">Litecoin-Adressen können nicht gelöscht werden. Möchtest Du eine neue Adresse zu Deinem Wallet hinzufügen?</string>
 	<string name="exchange_rates_activity_title">Wechselkurse</string>
 	<string name="exchange_rates_fragment_empty_text">Kann Wechselkurse nicht laden</string>
 	<string name="exchange_rates_fragment_default">(Standard)</string>
@@ -29,16 +29,16 @@
 	<string name="wallet_transactions_fragment_tab_received">Empfangen</string>
 	<string name="wallet_transactions_fragment_tab_all">Alle</string>
 	<string name="wallet_transactions_fragment_tab_sent">Gesendet</string>
-	<string name="wallet_transactions_fragment_empty_text_received">Noch keine Bitcoins empfangen.</string>
-	<string name="wallet_transactions_fragment_empty_text_sent">Noch keine Bitcoins gesendet.</string>
-	<string name="wallet_transactions_fragment_empty_text_howto">Wie komme ich an Bitcoins?\n\nHandle gegen traditionelles Geld,\nverkaufe Güter oder Dienstleistungen oder\nverdiene durch Arbeit.</string>
+	<string name="wallet_transactions_fragment_empty_text_received">Noch keine Litecoins empfangen.</string>
+	<string name="wallet_transactions_fragment_empty_text_sent">Noch keine Litecoins gesendet.</string>
+	<string name="wallet_transactions_fragment_empty_text_howto">Wie komme ich an Litecoins?\n\nHandle gegen traditionelles Geld,\nverkaufe Güter oder Dienstleistungen oder\nverdiene durch Arbeit.</string>
 	<string name="wallet_transactions_fragment_coinbase">geschürft</string>
 	<string name="wallet_transactions_context_show_transaction_title">Transaktionsdetails</string>
 	<string name="wallet_options_backup">Schlüsselsicherung</string>
 	<string name="wallet_options_disconnect">Verbindungen trennen</string>
 	<string name="wallet_options_safety">Sicherheit</string>
 	<string name="wallet_options_donate">Spenden</string>
-	<string name="wallet_donate_address_label">Spende für Bitcoin Wallet</string>
+	<string name="wallet_donate_address_label">Spende für Litecoin Wallet</string>
 	<string name="wallet_import_keys_dialog_title">Private Schlüssel importieren</string>
 	<string name="wallet_import_keys_dialog_message">Wähle eine Import-Datei mit privaten Schlüsseln vom externen oder app-privaten Speicher aus:</string>
 	<string name="wallet_import_keys_dialog_file_security_encrypted">mit Passwort verschlüsselt</string>
@@ -62,12 +62,12 @@
 	<string name="wallet_import_export_keys_dialog_show">Passwort zeigen</string>
 	<string name="wallet_import_export_keys_dialog_failure_title">Fehler</string>
 	<string name="wallet_low_storage_dialog_title">Interner Speicher wird knapp!</string>
-	<string name="wallet_low_storage_dialog_msg">Bitcoin Wallet nutzt internen Speicher um sich Transaktionen und Blöcke zu merken. Wenn der
-		Speicher vollläuft, wird es nicht mehr funktionieren und Deine Bitcoins sind in Gefahr!\n\nMöchtest Du die
+	<string name="wallet_low_storage_dialog_msg">Litecoin Wallet nutzt internen Speicher um sich Transaktionen und Blöcke zu merken. Wenn der
+		Speicher vollläuft, wird es nicht mehr funktionieren und Deine Litecoins sind in Gefahr!\n\nMöchtest Du die
 		App-Verwaltung öffnen, um ungenutzte Apps zu deinstallieren?</string>
 	<string name="wallet_low_storage_dialog_button_apps">App-Verwaltung</string>
 	<string name="wallet_timeskew_dialog_title">Überprüfe Deine Zeit-Einstellungen!</string>
-	<string name="wallet_timeskew_dialog_msg">Deine Gerätezeit geht %d Minuten falsch. Deswegen kannst Du möglicherweise keine Bitcoins senden
+	<string name="wallet_timeskew_dialog_msg">Deine Gerätezeit geht %d Minuten falsch. Deswegen kannst Du möglicherweise keine Litecoins senden
 		oder empfangen.\n\nDu solltest Deine Zeit- und Zeitzoneneinstellungen überprüfen und korrigieren.</string>
 	<string name="wallet_timeskew_dialog_button_settings">Einstellungen</string>
 	<string name="wallet_version_dialog_title">Eine neue Version ist verfügbar!</string>
@@ -75,18 +75,18 @@
 	<string name="wallet_version_dialog_button_market">Google Play</string>
 	<string name="wallet_version_dialog_button_binary">Herunterladen</string>
 	<string name="wallet_old_sdk_dialog_title">Android ist veraltet</string>
-	<string name="wallet_old_sdk_dialog_message">Es ist möglich, daß eine der nächsten Versionen von Bitcoin Wallet dein Gerät nicht mehr unterstützt. In manchen Fällen kann es schwierig werden, Zahlungen zu tätigen.\n\nEs wird empfohlen, die enthaltenen Bitcoins bald zu verschieben, außer du weisst was du tust.</string>
+	<string name="wallet_old_sdk_dialog_message">Es ist möglich, daß eine der nächsten Versionen von Litecoin Wallet dein Gerät nicht mehr unterstützt. In manchen Fällen kann es schwierig werden, Zahlungen zu tätigen.\n\nEs wird empfohlen, die enthaltenen Litecoins bald zu verschieben, außer du weisst was du tust.</string>
 
-	<string name="send_coins_activity_title">Bitcoins senden</string>
-	<string name="send_coins_uri_parse_error_title">Ungültige Bitcoin-URI</string>
-	<string name="send_coins_parse_address_error_msg">Ungültige Bitcoin-Adresse gelesen!\n(Versuchst Du Testnet/Prodnet zu mischen?)</string>
+	<string name="send_coins_activity_title">Litecoins senden</string>
+	<string name="send_coins_uri_parse_error_title">Ungültige Litecoin-URI</string>
+	<string name="send_coins_parse_address_error_msg">Ungültige Litecoin-Adresse gelesen!\n(Versuchst Du Testnet/Prodnet zu mischen?)</string>
 	<string name="send_coins_fragment_receiving_address_label">Empfänger</string>
 	<string name="send_coins_fragment_receiving_address_hint">Adresse oder Namen</string>
-	<string name="send_coins_fragment_receiving_address_error">Ungültige Bitcoin-Adresse!</string>
+	<string name="send_coins_fragment_receiving_address_error">Ungültige Litecoin-Adresse!</string>
 	<string name="send_coins_fragment_receiving_address_error_cross_network">Kann %s-Adresse mit diesem Wallet nicht nutzen!</string>
 	<string name="send_coins_fragment_receiving_address_error_cross_network_unknown">Kann Adresse von unbekanntem Netzwerk mit diesem Wallet nicht nutzen!</string>
 	<string name="send_coins_fragment_available_label">Verfügbar</string>
-	<string name="send_coins_fragment_pending">(BTC %s warten auf Bestätigung)</string>
+	<string name="send_coins_fragment_pending">(LTC %s warten auf Bestätigung)</string>
 	<string name="send_coins_fragment_amount_label">Betrag</string>
 	<string name="send_coins_fragment_amount_empty">Ergänze Betrag hier</string>
 	<string name="send_coins_fragment_amount_error">Ungültiger Betrag!</string>
@@ -99,15 +99,15 @@
 	<string name="send_coins_failed_msg">Fehlgeschlagen!</string>
 	<string name="send_coins_add_address_dialog_title">Der Empfänger ist noch nicht in Deinem Adressbuch gespeichert.\n\nMöchtest Du ihn jetzt hinzufügen?</string>
 	<string name="send_coins_add_address_dialog_button_add">Adresse hinzufügen</string>
-	<string name="send_coins_error_msg">Problem beim Versenden der Bitcoins!</string>
+	<string name="send_coins_error_msg">Problem beim Versenden der Litecoins!</string>
 	<string name="send_coins_options_scan_title">Scannen</string>
 	<string name="send_coins_address_context_clear_title">Adresse neu eingeben</string>
-	<string name="send_coins_dialog_fee_message">Du bist dabei, Bitcoins mit einer geringen Gebühr zu versenden. Es kann sehr lange dauern, bis diese Transaktion bestätigt wird.\n\nEs wird empfohlen, eine Gebühr von mindestens %s zu verwenden.</string>
+	<string name="send_coins_dialog_fee_message">Du bist dabei, Litecoins mit einer geringen Gebühr zu versenden. Es kann sehr lange dauern, bis diese Transaktion bestätigt wird.\n\nEs wird empfohlen, eine Gebühr von mindestens %s zu verwenden.</string>
 	<string name="send_coins_dialog_fee_button_send">Trotzdem senden</string>
 	<string name="send_coins_dialog_fee_button_adjust">Gebühr anpassen</string>
 	<string name="send_coins_dialog_fee_button_dismiss">Nicht senden</string>
 
-	<string name="request_coins_activity_title">Bitcoins anfordern</string>
+	<string name="request_coins_activity_title">Litecoins anfordern</string>
 	<string name="request_coins_fragment_amount_label">Angeforderter Betrag (optional)</string>
 	<string name="request_coins_fragment_address_label">Anfordernde Adresse</string>
 	<string name="request_coins_fragment_include_address_label">Name der Adresse beifügen</string>
@@ -121,7 +121,7 @@
 	<string name="address_book_list_receiving_title">Deine Adressen</string>
 	<string name="address_book_list_sending_title">Sendeadressen</string>
 	<string name="address_book_empty_text">Keine Einträge im Adressbuch</string>
-	<string name="address_book_context_send_title">Bitcoins an Adresse senden</string>
+	<string name="address_book_context_send_title">Litecoins an Adresse senden</string>
 	<string name="address_book_context_edit_title">Adresse ändern</string>
 	<string name="address_book_context_remove_title">Adresse entfernen</string>
 	<string name="address_book_context_default_title">Als Standardadresse setzen</string>
@@ -161,7 +161,7 @@
 
 	<string name="amount_calculator_dialog_title">Währungs-Umrechner</string>
 	<string name="amount_calculator_dialog_button_use">Übernehmen</string>
-	<string name="amount_calculator_dialog_exchange_rate">BTC 1 ist etwa %1$s %2$s wert\nKurs von %3$s abgerufen</string>
+	<string name="amount_calculator_dialog_exchange_rate">LTC 1 ist etwa %1$s %2$s wert\nKurs von %3$s abgerufen</string>
 	<string name="amount_calculator_dialog_exchange_rate_not_available">Umrechnungskurs nicht verfügbar.</string>
 
 	<string name="peer_monitor_activity_title">Peer Monitor</string>
@@ -205,7 +205,7 @@
 
 	<string name="about_title">Über</string>
 	<string name="about_license_title">Lizenz</string>
-	<string name="about_credits_bitcoinj_title">Diese App nutzt bitcoinj %s</string>
+	<string name="about_credits_litecoinj_title">Diese App nutzt litecoinj %s</string>
 	<string name="about_credits_zxing_title">"Diese App nutzt 'zxing'"</string>
 	<string name="about_credits_icon_title">"Diese App nutzt ein Icon von 'bitboy'"</string>
 	<string name="about_author_twitter_title">Autor bei Twitter</string>
@@ -213,7 +213,7 @@
 	<string name="about_credits_market_app_title">Google Play App-Eintrag</string>
 	<string name="about_credits_market_publisher_title">Andere Apps des Autors</string>
 
-	<string name="notification_coins_received_msg">BTC %s empfangen</string>
+	<string name="notification_coins_received_msg">LTC %s empfangen</string>
 	<string name="notification_peers_connected_msg">%d Peers verbunden</string>
 
 	<!-- generic buttons -->
@@ -228,8 +228,8 @@
 	<string name="button_paste">Einfügen</string>
 	<string name="button_share">Teilen</string>
 	<string name="button_set_as_default">Als Standard setzen</string>
-	<string name="button_request_coins">BTC anfordern</string>
-	<string name="button_send_coins">BTC senden</string>
+	<string name="button_request_coins">LTC anfordern</string>
+	<string name="button_send_coins">LTC senden</string>
 	<string name="button_edit_address">Adresse hinzufügen/ändern</string>
 
 	<string name="time_today">heute</string>
