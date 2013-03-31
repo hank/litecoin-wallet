@@ -1,28 +1,37 @@
-With this app you always have your Bitcoins with you, in your pocket! You can send payments simply by scanning a QR-code or by touching two phones together (NFC). Bitcoin Wallet is designed to be easy to use and reliable, while also being secure and fast.
+With this app you always have your Litecoins with you, in your pocket! You can
+send payments simply by scanning a QR-code or by touching two phones together
+(NFC). Litecoin Wallet is designed to be easy to use and reliable, while also
+being secure and fast.
 
 FEATURES:
 
 • No cloud server or web service needed! This wallet is truly peer to peer.
-• Display of wallet balance in Bitcoin and various other currencies.
-• Sending and receiving of Bitcoin via NFC, QR-codes or Bitcoin URLs.
-• Address book for regularly used Bitcoin addresses.
+• Display of wallet balance in Litecoin and various other currencies.
+• Sending and receiving of Litecoin via NFC, QR-codes or Litecoin URLs.
+• Address book for regularly used Litecoin addresses.
 • Enter transactions while offline, will be executed when online.
 • Manages blockchain on your device (for enhanced security).
-• System notifications for Bitcoin connectivity and received coins.
-• App widget for Bitcoin balance (requirement: app moved to phone).
+• System notifications for Litecoin connectivity and received coins.
+• App widget for Litecoin balance (requirement: app moved to phone).
 
 KNOWN ISSUES, PLEASE READ:
 
 • When run for the first time, it can happen that the app shows only a white display for some seconds. This is normal.
 
-You can get your first Bitcoins to play with from
-https://freebitcoins.appspot.com/
+More Information:
 
-You can find more about Bitcoin at
-http://bitcoin.org
-
-If you want to contribute to Bitcoin Wallet, the project is located at
+This app is based upon the excellent work done by the Bitcoin Wallet developers:
 https://code.google.com/p/bitcoin-wallet/
+
+It used a masterfully converted library called litecoinj, which was converted
+from bitcoinj:
+https://code.google.com/p/litecoinj/
+
+You can find more about Litecoin at
+http://litecoin.org
+
+If you want to contribute to Litecoin Wallet, the project is located at
+http://www.github.com/hank/litecoin-wallet
 
 License: GPLv3
 Use at your own risk!
