@@ -80,8 +80,8 @@ import com.google.litecoin.discovery.PeerDiscovery;
 import com.google.litecoin.discovery.PeerDiscoveryException;
 import com.google.litecoin.store.BlockStore;
 import com.google.litecoin.store.BlockStoreException;
-import com.google.litecoin.store.BoundedOverheadBlockStore;
 
+import com.google.litecoin.store.SPVBlockStore;
 import de.schildbach.wallet.litecoin.Constants;
 import de.schildbach.wallet.litecoin.WalletApplication;
 import de.schildbach.wallet.litecoin.WalletBalanceWidgetProvider;
@@ -596,7 +596,7 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 
 		try
 		{
-			blockStore = new BoundedOverheadBlockStore(Constants.NETWORK_PARAMETERS, blockChainFile);
+			blockStore = new SPVBlockStore(Constants.NETWORK_PARAMETERS, blockChainFile);
 			blockStore.getChainHead(); // detect corruptions as early as possible
 		}
 		catch (final BlockStoreException x)
