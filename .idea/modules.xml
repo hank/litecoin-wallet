@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/base.iml" filepath="$PROJECT_DIR$/base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/integration-android/integration-android.iml" filepath="$PROJECT_DIR$/integration-android/integration-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample-integration-android/sample-integration-android.iml" filepath="$PROJECT_DIR$/sample-integration-android/sample-integration-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wallet/wallet.iml" filepath="$PROJECT_DIR$/wallet/wallet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wallet/gen-external-apklibs/~apklib-com.actionbarsherlock_library_4.1.0.iml" filepath="$PROJECT_DIR$/wallet/gen-external-apklibs/~apklib-com.actionbarsherlock_library_4.1.0.iml" />
+    </modules>
+  </component>
+</project>
+

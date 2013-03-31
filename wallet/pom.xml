@@ -6,7 +6,7 @@
 
 	<artifactId>wallet</artifactId>
 	<packaging>apk</packaging>
-	<version>1.00-test</version>
+	<version>1.00</version>
 	<name>Litecoin Wallet</name>
 
 	<parent>
@@ -148,6 +148,59 @@
 						<exclude>android:android</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			 <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-jarsigner-plugin</artifactId>
+			    <executions>
+				<execution>
+				    <id>signing</id>
+				    <goals>
+					<goal>sign</goal>
+					<goal>verify</goal>
+				    </goals>
+				    <phase>package</phase>
+				    <inherited>true</inherited>
+				    <configuration>
+					<removeExistingSignatures>true</removeExistingSignatures>
+					<archiveDirectory/>
+					<includes>
+					    <include>${project.build.directory}/${project.artifactId}.apk</include>
+					</includes>
+					<keystore>${sign.keystore}</keystore>
+					<alias>${sign.alias}</alias>
+					<storepass>${sign.storepass}</storepass>
+					<keypass>${sign.keypass}</keypass>
+					<verbose>true</verbose>
+				    </configuration>
+				</execution>
+			    </executions>
+			</plugin>
+			<!-- the signed apk then needs to be zipaligned -->
+			<plugin>
+			    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+			    <artifactId>maven-android-plugin</artifactId>
+			    <inherited>true</inherited>
+			    <configuration>
+				<sign>
+				    <debug>false</debug>
+				</sign>
+				<zipalign>
+				    <verbose>true</verbose>
+				    <inputApk>${project.build.directory}/${project.artifactId}.apk</inputApk>
+				    <outputApk>${project.build.directory}/${project.artifactId}-signed-aligned.apk
+				    </outputApk>
+				</zipalign>
+			    </configuration>
+			    <executions>
+				<execution>
+				    <id>alignApk</id>
+				    <phase>package</phase>
+				    <goals>
+					<goal>zipalign</goal>
+				    </goals>
+				</execution>
+			    </executions>
 			</plugin>
 		</plugins>
 	</build>
