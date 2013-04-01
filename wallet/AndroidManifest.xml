@@ -159,11 +159,11 @@
 
 		<provider
 			android:name=".AddressBookProvider"
-			android:authorities=".address_book"
+			android:authorities="de.schildbach.wallet.litecoin.address_book"
 			android:exported="false" />
 		<provider
 			android:name=".ExchangeRatesProvider"
-			android:authorities=".exchange_rates"
+			android:authorities="de.schildbach.wallet.litecoin.exchange_rates"
 			android:exported="false" />
 
 		<receiver
