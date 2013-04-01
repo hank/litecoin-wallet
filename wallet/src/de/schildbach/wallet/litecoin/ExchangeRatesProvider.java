@@ -21,7 +21,9 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Iterator;
@@ -159,53 +161,65 @@ public class ExchangeRatesProvider extends ContentProvider
 
 	private static Map<String, ExchangeRate> getLitecoinCharts()
 	{
-		try
-		{
-			final URL URL = new URL("https://btc-e.com/api/2/14/ticker");
-			final URLConnection connection = URL.openConnection();
-			connection.setConnectTimeout(TIMEOUT_MS);
-			connection.setReadTimeout(TIMEOUT_MS);
-			connection.connect();
-			final StringBuilder content = new StringBuilder();
+        final Map<String, ExchangeRate> rates = new TreeMap<String, ExchangeRate>();
+        // Keep the BTC rate around for a bit
+        Double btcRate = 0.0;
+		try {
+            String currencies[] = {"USD", "BTC", "RUR"};
+            String urls[] = {"https://btc-e.com/api/2/14/ticker", "https://btc-e.com/api/2/10/ticker", "https://btc-e.com/api/2/ltc_rur/ticker"};
+            for(int i = 0; i < currencies.length; ++i) {
+                final String currencyCode = currencies[i];
+                final URL URL = new URL(urls[i]);
+                final URLConnection connection = URL.openConnection();
+                connection.setConnectTimeout(TIMEOUT_MS);
+                connection.setReadTimeout(TIMEOUT_MS);
+                connection.connect();
+                final StringBuilder content = new StringBuilder();
 
-			Reader reader = null;
-			try
-			{
-				reader = new InputStreamReader(new BufferedInputStream(connection.getInputStream(), 1024));
-				IOUtils.copy(reader, content);
+                Reader reader = null;
+                try
+                {
+                    reader = new InputStreamReader(new BufferedInputStream(connection.getInputStream(), 1024));
+                    IOUtils.copy(reader, content);
+                    final JSONObject head = new JSONObject(content.toString());
+                    JSONObject ticker = head.getJSONObject("ticker");
+                    Double avg = ticker.getDouble("avg");
+                    rates.put(currencyCode, new ExchangeRate(currencyCode, Utils.toNanoCoins(String.format("%4f", avg)), URL.getHost()));
+                    if(currencyCode.equalsIgnoreCase("BTC")) btcRate = avg;
+                }
+                finally
+                {
+                    if (reader != null)
+                        reader.close();
+                }
+            }
+            // Handle LTC/EUR special since we have to do maths
+            final URL URL = new URL("https://btc-e.com/api/2/btc_eur/ticker");
+            final URLConnection connection = URL.openConnection();
+            connection.setConnectTimeout(TIMEOUT_MS);
+            connection.setReadTimeout(TIMEOUT_MS);
+            connection.connect();
+            final StringBuilder content = new StringBuilder();
 
-				final Map<String, ExchangeRate> rates = new TreeMap<String, ExchangeRate>();
-
-				final JSONObject head = new JSONObject(content.toString());
-                String currencyCode = "USD";
+            Reader reader = null;
+            try
+            {
+                reader = new InputStreamReader(new BufferedInputStream(connection.getInputStream(), 1024));
+                IOUtils.copy(reader, content);
+                final JSONObject head = new JSONObject(content.toString());
                 JSONObject ticker = head.getJSONObject("ticker");
                 Double avg = ticker.getDouble("avg");
-                rates.put(currencyCode, new ExchangeRate(currencyCode, Utils.toNanoCoins(avg.toString()), URL.getHost()));
-				/*for (final Iterator<String> i = head.keys(); i.hasNext();)
-				{
-					final String currencyCode = i.next();
-					if (!"timestamp".equals(currencyCode))
-					{
-						final JSONObject o = head.getJSONObject(currencyCode);
-						String rate = o.optString("24h", null);
-						if (rate == null)
-							rate = o.optString("7d", null);
-						if (rate == null)
-							rate = o.optString("30d", null);
-
-						if (rate != null)
-							rates.put(currencyCode, new ExchangeRate(currencyCode, Utils.toNanoCoins(rate), URL.getHost()));
-					}
-				}*/
-
-				return rates;
-			}
-			finally
-			{
-				if (reader != null)
-					reader.close();
-			}
-		}
+                // This is bitcoins priced in euros.  We want LTC!
+                avg *= btcRate;
+                rates.put("EUR", new ExchangeRate("EUR", Utils.toNanoCoins(String.format("%4f", avg)), URL.getHost()));
+            }
+            finally
+            {
+                if (reader != null)
+                    reader.close();
+            }
+            return rates;
+        }
 		catch (final IOException x)
 		{
 			x.printStackTrace();
