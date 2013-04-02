@@ -30,7 +30,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.ClipboardManager;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,6 +56,7 @@ import de.schildbach.wallet.litecoin.R;
 /**
  * @author Andreas Schildbach
  */
+
 public final class TransactionFragment extends SherlockFragment
 {
 	public static final String FRAGMENT_TAG = TransactionFragment.class.getName();
@@ -64,8 +64,9 @@ public final class TransactionFragment extends SherlockFragment
 	private static final int SHOW_QR_THRESHOLD_BYTES = 2500;
 
 	private AbstractWalletActivity activity;
+    
     @SuppressWarnings("deprecation")
-	private ClipboardManager clipboardManager;
+	private android.text.ClipboardManager clipboardManager;
 
 	private DateFormat dateFormat;
 	private DateFormat timeFormat;
@@ -80,7 +81,7 @@ public final class TransactionFragment extends SherlockFragment
 
 		dateFormat = android.text.format.DateFormat.getDateFormat(activity);
 		timeFormat = android.text.format.DateFormat.getTimeFormat(activity);
-		clipboardManager = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+		clipboardManager = (android.text.ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
 	}
 
 	@Override

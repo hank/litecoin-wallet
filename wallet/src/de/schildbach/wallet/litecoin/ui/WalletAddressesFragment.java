@@ -30,7 +30,6 @@ import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.text.ClipboardManager;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -242,11 +241,18 @@ public final class WalletAddressesFragment extends SherlockListFragment
 				BitmapFragment.show(getFragmentManager(), WalletUtils.getQRCodeBitmap(uri, size));
 			}
 
+            @SuppressWarnings("deprecation")
 			private void handleCopyToClipboard(final Address address)
 			{
-                @SuppressWarnings("deprecation")
-				final ClipboardManager clipboardManager = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
-				clipboardManager.setText(address.toString());
+                int sdk = android.os.Build.VERSION.SDK_INT;
+                if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
+                    android.text.ClipboardManager clipboard = (android.text.ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+                    clipboard.setText(address.toString());
+                } else {
+                    android.content.ClipboardManager clipboard = (android.content.ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+                    android.content.ClipData clip = android.content.ClipData.newPlainText("LTC Address", address.toString());
+                    clipboard.setPrimaryClip(clip);
+                }
 				activity.toast(R.string.wallet_address_fragment_clipboard_msg);
 			}
 

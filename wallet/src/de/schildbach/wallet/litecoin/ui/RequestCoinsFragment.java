@@ -28,7 +28,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ShareCompat.IntentBuilder;
-import android.text.ClipboardManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -61,15 +60,17 @@ import de.schildbach.wallet.litecoin.R;
 /**
  * @author Andreas Schildbach
  */
+
 public final class RequestCoinsFragment extends SherlockFragment implements AmountCalculatorFragment.Listener
 {
 	private AbstractWalletActivity activity;
 	private WalletApplication application;
 	private Object nfcManager;
-    @SuppressWarnings("deprecation")
-	private ClipboardManager clipboardManager;
-	private ShareActionProvider shareActionProvider;
 
+    @SuppressWarnings("deprecation")
+	private android.text.ClipboardManager clipboardManager;
+
+	private ShareActionProvider shareActionProvider;
 	private ImageView qrView;
 	private Bitmap qrCodeBitmap;
 	private CurrencyAmountView amountView;
@@ -79,7 +80,6 @@ public final class RequestCoinsFragment extends SherlockFragment implements Amou
 
 	@SuppressLint("InlinedApi")
 	@Override
-    @SuppressWarnings("deprecation")
 	public void onAttach(final Activity activity)
 	{
 		super.onAttach(activity);
@@ -87,7 +87,7 @@ public final class RequestCoinsFragment extends SherlockFragment implements Amou
 		application = (WalletApplication) activity.getApplication();
 
 		nfcManager = activity.getSystemService(Context.NFC_SERVICE);
-		clipboardManager = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+		clipboardManager = (android.text.ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
 	}
 
 	@Override

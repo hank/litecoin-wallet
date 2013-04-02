@@ -822,7 +822,14 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 		final AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
 
 		final ComponentName providerName = new ComponentName(this, WalletBalanceWidgetProvider.class);
-		final int[] appWidgetIds = appWidgetManager.getAppWidgetIds(providerName);
+        final int[] appWidgetIds;
+        try {
+                appWidgetIds = appWidgetManager.getAppWidgetIds(providerName);
+        } catch(RuntimeException e) {
+            // Bug #6 - App server dead?
+            Log.e("Litecoin", "App server appears dead - Runtime Exception when running getAppWidgetIds.  Returning..");
+            return;
+        }
 
 		if (appWidgetIds.length > 0)
 		{

@@ -33,7 +33,6 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter.ViewBinder;
-import android.text.ClipboardManager;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -60,7 +59,7 @@ import de.schildbach.wallet.litecoin.R;
 public final class SendingAddressesFragment extends SherlockListFragment implements LoaderManager.LoaderCallbacks<Cursor>
 {
 	private AbstractWalletActivity activity;
-	private ClipboardManager clipboardManager;
+    private android.text.ClipboardManager clipboardManager;
 	private LoaderManager loaderManager;
 
 	private SimpleCursorAdapter adapter;
@@ -76,7 +75,8 @@ public final class SendingAddressesFragment extends SherlockListFragment impleme
 		super.onAttach(activity);
 
 		this.activity = (AbstractWalletActivity) activity;
-		this.clipboardManager = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+        // This works for both clipboard managers because android.content.ClipboardManager is subclassed from the old one.
+        this.clipboardManager = (android.text.ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
 		this.loaderManager = getLoaderManager();
 	}
 
@@ -314,8 +314,16 @@ public final class SendingAddressesFragment extends SherlockListFragment impleme
 
 	private void handleCopyToClipboard(final String address)
 	{
-		ClipboardManager clipboardManager = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
-		clipboardManager.setText(address);
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
+            android.text.ClipboardManager clipboard = (android.text.ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+            clipboard.setText(address);
+        } else {
+            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+            android.content.ClipData clip = android.content.ClipData.newPlainText("address", address);
+            clipboard.setPrimaryClip(clip);
+        }
+
 		activity.toast(R.string.wallet_address_fragment_clipboard_msg);
 	}
 
