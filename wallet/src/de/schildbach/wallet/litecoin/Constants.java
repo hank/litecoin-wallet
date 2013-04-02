@@ -30,6 +30,7 @@ import de.schildbach.wallet.litecoin.R;
 
 /**
  * @author Andreas Schildbach
+ * @author Erik Gregg
  */
 public class Constants
 {
@@ -99,7 +100,7 @@ public class Constants
 	public static final int LOCAL_PRECISION = 4;
 
 	public static final String DONATION_ADDRESS = "169EnuJgJf3L31cSkMLBm5hHvk42s8Qi4C";
-	public static final String REPORT_EMAIL = "wallet@schildbach.de";
+	public static final String REPORT_EMAIL = "ralree@gmail.com";
 	public static final String REPORT_SUBJECT_ISSUE = "Reported issue";
 	public static final String REPORT_SUBJECT_CRASH = "Crash report";
 

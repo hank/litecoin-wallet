@@ -184,7 +184,10 @@ public class ExchangeRatesProvider extends ContentProvider
                     final JSONObject head = new JSONObject(content.toString());
                     JSONObject ticker = head.getJSONObject("ticker");
                     Double avg = ticker.getDouble("avg");
-                    rates.put(currencyCode, new ExchangeRate(currencyCode, Utils.toNanoCoins(String.format("%4f", avg)), URL.getHost()));
+                    String euros = String.format("%.4f", avg);
+                    // Fix things like 3,1250
+                    euros = euros.replace(",", ".");
+                    rates.put(currencyCode, new ExchangeRate(currencyCode, Utils.toNanoCoins(euros), URL.getHost()));
                     if(currencyCode.equalsIgnoreCase("BTC")) btcRate = avg;
                 }
                 finally
