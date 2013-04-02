@@ -28,17 +28,14 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ShareCompat.IntentBuilder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageView;
-import android.widget.Spinner;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
@@ -275,7 +272,15 @@ public final class RequestCoinsFragment extends SherlockFragment implements Amou
 		builder.setText(determineRequestStr());
 		builder.setType("text/plain");
 		builder.setChooserTitle(R.string.request_coins_share_dialog_title);
-		shareActionProvider.setShareIntent(builder.getIntent());
+        try {
+		    shareActionProvider.setShareIntent(builder.getIntent());
+        } catch (NullPointerException e) {
+            // Not really sure why this is happening.
+            // Bug #5
+            Log.e("Litecoin", "NullPointerException when trying to start request coins intent.");
+            Toast.makeText(activity.getApplicationContext(), "Failed to start Request Coins activity",
+                    Toast.LENGTH_SHORT).show();
+        }
 	}
 
 	private String determineRequestStr()

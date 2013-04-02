@@ -64,7 +64,7 @@ public final class TransactionFragment extends SherlockFragment
 	private static final int SHOW_QR_THRESHOLD_BYTES = 2500;
 
 	private AbstractWalletActivity activity;
-    
+
     @SuppressWarnings("deprecation")
 	private android.text.ClipboardManager clipboardManager;
 
