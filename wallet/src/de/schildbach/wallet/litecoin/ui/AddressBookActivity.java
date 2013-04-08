@@ -89,7 +89,8 @@ public final class AddressBookActivity extends AbstractWalletActivity
 		}
 		else
 		{
-			walletAddressesFragment = (WalletAddressesFragment) fm.findFragmentById(R.id.wallet_addresses_fragment);
+            // The following line causes a bug on some phones.  See issue #10.
+			//walletAddressesFragment = (WalletAddressesFragment) fm.findFragmentById(R.id.wallet_addresses_fragment);
 			sendingAddressesFragment = (SendingAddressesFragment) fm.findFragmentById(R.id.sending_addresses_fragment);
 		}
 
