@@ -26,10 +26,13 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
+import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -214,9 +217,9 @@ public class ExchangeRatesProvider extends ContentProvider
                 Double avg = ticker.getDouble("avg");
                 // This is bitcoins priced in euros.  We want LTC!
                 avg *= btcRate;
-                rates.put("EUR", new ExchangeRate("EUR", Utils.toNanoCoins(String.format("%4f", avg)), URL.getHost()));
-            }
-            finally
+                String s_avg = String.format("%.4f", avg).replace(',', '.');
+                rates.put("EUR", new ExchangeRate("EUR", Utils.toNanoCoins(s_avg), URL.getHost()));
+            } finally
             {
                 if (reader != null)
                     reader.close();

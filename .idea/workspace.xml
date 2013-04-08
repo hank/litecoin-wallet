@@ -156,7 +156,14 @@
     <option name="TOOL_WINDOW_CUSTOM_FILTER" value="litecoin" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" name="Default" comment="" />
+    <list default="true" id="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_actionbarsherlock_library_apklib_4_1_0.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wallet/AndroidManifest.xml" afterPath="$PROJECT_DIR$/wallet/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ExchangeRatesProvider.java" afterPath="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ExchangeRatesProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wallet/pom.xml" afterPath="$PROJECT_DIR$/wallet/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wallet/wallet.iml" afterPath="$PROJECT_DIR$/wallet/wallet.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="litecoin-wallet.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364743377216" ignored="false" />
@@ -164,11 +171,6 @@
     <file path="/AddressBookActivity.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364743546440" ignored="false" />
     <file path="/a.dummy" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364780643742" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364776549866" ignored="false" />
-    <file path="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/camera/CameraManager.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364743780300" ignored="false" />
-    <file path="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/camera/CameraSupportManager.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364743780301" ignored="false" />
-    <file path="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/camera/DefaultCameraInterface.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364743780301" ignored="false" />
-    <file path="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/camera/CameraInterface.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364743780301" ignored="false" />
-    <file path="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/camera/GingerbreadCameraInterface.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364743780301" ignored="false" />
     <file path="/strings.xml" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364744067873" ignored="false" />
     <file path="/AUTHORS" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364744245853" ignored="false" />
     <file path="$PROJECT_DIR$/../litecoinj/core/src/main/java/com/google/litecoin/store/WalletProtobufSerializer.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364744493670" ignored="false" />
@@ -267,7 +269,7 @@
     <file path="$MAVEN_REPOSITORY$/com/google/litecoinj/0.8-SNAPSHOT/litecoinj-0.8-SNAPSHOT-sources.jar!/com/google/litecoin/core/ECKey.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364744494059" ignored="false" />
     <file path="/LitecoinIntegration.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364744556750" ignored="false" />
     <file path="/SampleActivity.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364744694574" ignored="false" />
-    <file path="/fragment.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364946906541" ignored="false" />
+    <file path="/fragment.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1365395600568" ignored="false" />
     <file path="/WalletActivity.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364745425740" ignored="false" />
     <file path="/address_book_onepane.xml" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364745743734" ignored="false" />
     <file path="/TransactionFragment.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364946067733" ignored="false" />
@@ -276,8 +278,10 @@
     <file path="/RequestCoinsFragment.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364946896052" ignored="false" />
     <file path="/values.xml" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364746896231" ignored="false" />
     <file path="/BlockchainServiceImpl.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364944885357" ignored="false" />
-    <file path="/ExchangeRatesProvider.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364944162161" ignored="false" />
+    <file path="/ExchangeRatesProvider.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1365395595477" ignored="false" />
     <file path="/ExchangeRatesFragment.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1364775997415" ignored="false" />
+    <file path="$PROJECT_DIR$/wallet/gen/de/schildbach/wallet/litecoin/R.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1365395779597" ignored="false" />
+    <file path="$PROJECT_DIR$/wallet/gen/com/actionbarsherlock/R.java" changelist="2ec089cf-9baa-4e7e-b4b5-10c48c05bdb3" time="1365395779598" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,141 +340,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ExchangeRatesProvider.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ExchangeRatesProvider.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ExchangeRatesProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="194" column="14" selection-start="6612" selection-end="6612" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#8659#8681#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BlockchainService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/service/BlockchainService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="17" selection-start="1009" selection-end="1009" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BlockchainServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/service/BlockchainServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="842" column="0" selection-start="25795" selection-end="25795" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WalletAddressesFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/WalletAddressesFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="247" column="68" selection-start="7405" selection-end="7405" vertical-scroll-proportion="0.0">
+            <state line="220" column="80" selection-start="7883" selection-end="7883" vertical-scroll-proportion="0.59099436">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7178#7210#0" expanded="true" />
+                <element signature="e#8793#8815#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SendingAddressesFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/SendingAddressesFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="316" column="51" selection-start="9506" selection-end="9506" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestCoinsFragment.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/RequestCoinsFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="28" selection-start="2447" selection-end="2447" vertical-scroll-proportion="0.33203125">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2389#2421#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransactionFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/TransactionFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="0" selection-start="2266" selection-end="2266" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2314#2346#0" expanded="true" />
-                <element signature="e#2485#2517#0" expanded="true" />
-                <element signature="e#6023#6178#0" expanded="true" />
-                <element signature="e#6172#6173#0" expanded="true" />
-                <element signature="e#6955#7110#0" expanded="true" />
-                <element signature="e#7104#7105#0" expanded="true" />
-                <element signature="e#8139#8329#0" expanded="true" />
-                <element signature="e#8324#8325#0" expanded="true" />
-                <element signature="e#9428#9577#0" expanded="true" />
-                <element signature="e#9570#9571#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WalletActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/WalletActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="658" column="0" selection-start="20560" selection-end="20560" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#26763#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#8342#8672#0" expanded="false" />
-                <element signature="e#8667#8668#0" expanded="false" />
-                <element signature="e#8727#8890#0" expanded="false" />
-                <element signature="e#8885#8886#0" expanded="false" />
-                <element signature="e#8923#9071#0" expanded="false" />
-                <element signature="e#9066#9067#0" expanded="false" />
-                <element signature="e#9266#9272#0" expanded="false" />
-                <element signature="e#9720#9875#0" expanded="false" />
-                <element signature="e#9870#9871#0" expanded="false" />
-                <element signature="e#12693#12960#0" expanded="false" />
-                <element signature="e#12955#12956#0" expanded="false" />
-                <element signature="e#13015#13178#0" expanded="false" />
-                <element signature="e#13173#13174#0" expanded="false" />
-                <element signature="e#13211#13359#0" expanded="false" />
-                <element signature="e#13354#13355#0" expanded="false" />
-                <element signature="e#14788#15013#0" expanded="false" />
-                <element signature="e#15008#15009#0" expanded="false" />
-                <element signature="e#17129#17366#0" expanded="false" />
-                <element signature="e#17360#17361#0" expanded="false" />
-                <element signature="e#18316#18461#0" expanded="false" />
-                <element signature="e#18451#18452#0" expanded="false" />
-                <element signature="e#18565#18708#0" expanded="false" />
-                <element signature="e#18699#18700#0" expanded="false" />
-                <element signature="e#18981#19090#0" expanded="false" />
-                <element signature="e#19082#19083#0" expanded="false" />
-                <element signature="e#21185#21363#0" expanded="false" />
-                <element signature="e#21357#21358#0" expanded="false" />
-                <element signature="e#22171#22347#0" expanded="false" />
-                <element signature="e#22341#22342#0" expanded="false" />
-                <element signature="e#22484#22660#0" expanded="false" />
-                <element signature="e#22654#22655#0" expanded="false" />
-                <element signature="e#24695#24891#0" expanded="false" />
-                <element signature="e#24884#24885#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wallet/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="174" column="0" selection-start="6200" selection-end="6200" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -507,12 +384,12 @@
         <option value="$PROJECT_DIR$/wallet/res/values/values.xml" />
         <option value="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/ExchangeRatesFragment.java" />
         <option value="$PROJECT_DIR$/wallet/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ExchangeRatesProvider.java" />
         <option value="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/service/BlockchainServiceImpl.java" />
         <option value="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/WalletAddressesFragment.java" />
         <option value="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/SendingAddressesFragment.java" />
         <option value="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/TransactionFragment.java" />
         <option value="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/RequestCoinsFragment.java" />
+        <option value="$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ExchangeRatesProvider.java" />
       </list>
     </option>
   </component>
@@ -531,8 +408,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="63" />
-    <option name="y" value="40" />
+    <option name="x" value="97" />
+    <option name="y" value="58" />
     <option name="width" value="1823" />
     <option name="height" value="979" />
   </component>
@@ -613,32 +490,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="litecoin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="litecoin-wallet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="litecoin-wallet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wallet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="litecoin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -892,8 +743,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="63" y="40" width="1823" height="979" extended-state="0" />
-    <editor active="true" />
+    <frame x="97" y="58" width="1823" height="979" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -911,7 +762,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18577075" sideWeight="0.67106843" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18577075" sideWeight="0.67106843" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32893157" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -979,13 +830,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wallet/res/xml/about.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.16885553">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wallet/res/xml/preferences.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.2788461">
@@ -1009,21 +853,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wallet/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="174" column="0" selection-start="6200" selection-end="6200" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/ExchangeRatesFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="237" column="81" selection-start="7689" selection-end="7689" vertical-scroll-proportion="0.9512195">
+        <state line="174" column="0" selection-start="6200" selection-end="6200" vertical-scroll-proportion="0.59099436">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/WalletActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="658" column="0" selection-start="20560" selection-end="20560" vertical-scroll-proportion="0.0">
+        <state line="658" column="0" selection-start="20560" selection-end="20560" vertical-scroll-proportion="1.0919324">
           <folding>
             <element signature="e#0#26763#0" expanded="false" />
             <element signature="imports" expanded="false" />
@@ -1111,18 +948,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ExchangeRatesProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="14" selection-start="6612" selection-end="6612" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#8659#8681#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/TransactionFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="2266" selection-end="2266" vertical-scroll-proportion="0.0">
+        <state line="64" column="0" selection-start="2266" selection-end="2266" vertical-scroll-proportion="0.23452158">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2314#2346#0" expanded="true" />
@@ -1141,10 +969,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/RequestCoinsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="28" selection-start="2447" selection-end="2447" vertical-scroll-proportion="0.33203125">
+        <state line="67" column="28" selection-start="2447" selection-end="2447" vertical-scroll-proportion="0.31894934">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2389#2421#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/ExchangeRatesFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="237" column="81" selection-start="7689" selection-end="7689" vertical-scroll-proportion="5.0375233">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ui/ExchangeRatesActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="19" selection-start="969" selection-end="969" vertical-scroll-proportion="0.09943715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wallet/src/de/schildbach/wallet/litecoin/ExchangeRatesProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="220" column="80" selection-start="7883" selection-end="7883" vertical-scroll-proportion="0.59099436">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8793#8815#0" expanded="true" />
           </folding>
         </state>
       </provider>
