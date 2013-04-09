@@ -384,7 +384,13 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 
 				Log.i(TAG, "starting peergroup");
 				peerGroup = new PeerGroup(Constants.NETWORK_PARAMETERS, blockChain);
-				peerGroup.addWallet(wallet);
+                try {
+				    peerGroup.addWallet(wallet);
+                } catch(NoSuchMethodError e) {
+                    Log.e("Litecoin", "There's no method: " + e.getLocalizedMessage());
+                    Log.e("Litecoin", "Litecoinj issue.  We're going to ignore this for now and just try and return nicely.");
+                    return;
+                }
 				peerGroup.setUserAgent(Constants.USER_AGENT, application.applicationVersionName());
 				peerGroup.addEventListener(peerConnectivityListener);
 
