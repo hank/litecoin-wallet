@@ -123,7 +123,11 @@ public class ExchangeRatesProvider extends ContentProvider
 		{
 			final String code = selectionArgs[0];
 			final ExchangeRate rate = exchangeRates.get(code);
-			cursor.newRow().add(code.hashCode()).add(rate.currencyCode).add(rate.rate.longValue()).add(rate.source);
+            try {
+			  cursor.newRow().add(code.hashCode()).add(rate.currencyCode).add(rate.rate.longValue()).add(rate.source);
+            } catch (NullPointerException e) {
+                Log.e("Litecoin", "Unable to add an exchange rate.  NullPointerException.");
+            }
 		}
 
 		return cursor;

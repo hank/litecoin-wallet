@@ -109,9 +109,9 @@ public class Constants
 	public static final String BINARY_URL = "http://code.google.com/p/litecoin-wallet/downloads/list";
 	public static final String CREDITS_LITECOINJ_URL = "http://code.google.com/p/litecoinj/";
 	public static final String CREDITS_ZXING_URL = "http://code.google.com/p/zxing/";
-	public static final String CREDITS_ICON_URL = "https://litecointalk.org/index.php?action=profile;u=2062";
+	public static final String CREDITS_ICON_URL = "http://forum.litecoin.net/index.php?topic=1134.0";
 	public static final String AUTHOR_TWITTER_URL = "https://twitter.com/#!/litecoin_wallet";
-	public static final String AUTHOR_GOOGLEPLUS_URL = "https://profiles.google.com/andreas.schildbach";
+	public static final String AUTHOR_GOOGLEPLUS_URL = "https://profiles.google.com/hardware.hank";
 	public static final String MARKET_APP_URL = "market://details?id=%s";
 	public static final String WEBMARKET_APP_URL = "https://play.google.com/store/apps/details?id=%s";
 	public static final String MARKET_PUBLISHER_URL = "market://search?q=pub:\"Andreas Schildbach\"";
@@ -136,7 +136,7 @@ public class Constants
 	public static final String PREFS_KEY_LTC_PRECISION = "ltc_precision";
 	public static final String PREFS_KEY_DISCLAIMER = "disclaimer";
 
-	public static final BigInteger DEFAULT_TX_FEE = Utils.CENT.divide(BigInteger.valueOf(20));
+	public static final BigInteger DEFAULT_TX_FEE = Utils.CENT; // 0.01
 
 	public static final long LAST_USAGE_THRESHOLD_JUST_MS = DateUtils.HOUR_IN_MILLIS;
 	public static final long LAST_USAGE_THRESHOLD_RECENTLY_MS = 2 * DateUtils.DAY_IN_MILLIS;
