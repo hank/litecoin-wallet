@@ -6,7 +6,7 @@
 
 	<artifactId>wallet</artifactId>
 	<packaging>apk</packaging>
-	<version>1.041</version>
+	<version>1.05</version>
 	<name>Litecoin Wallet</name>
 
 	<parent>
@@ -53,7 +53,7 @@
 		<dependency>
 			<groupId>com.google</groupId>
 			<artifactId>litecoinj</artifactId>
-			<version>0.8-SNAPSHOT</version>
+			<version>0.81-SNAPSHOT</version>
 		</dependency>
 
 		<!-- de.schildbach.wallet.litecoin.integration.android.* -->

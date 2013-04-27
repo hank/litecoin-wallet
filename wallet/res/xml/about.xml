@@ -6,7 +6,7 @@
 			android:key="about_version"
 			android:title="Version" />
 		<Preference
-			android:summary="© 2011-2013, Andreas Schildbach"
+			android:summary="© 2011-2013, Erik Gregg"
 			android:title="Copyright" />
 		<Preference
 			android:key="about_license"
@@ -27,7 +27,7 @@
 			android:title="@string/about_author_twitter_title" />
 		<Preference
 			android:key="about_author_googleplus"
-			android:summary="+Andreas Schildbach"
+			android:summary="+Erik Gregg"
 			android:title="@string/about_author_googleplus_title" />
 		<Preference
 			android:key="about_market_app"
