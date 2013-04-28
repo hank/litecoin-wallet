@@ -589,8 +589,9 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 			blockStore = new SPVBlockStore(Constants.NETWORK_PARAMETERS, blockChainFile);
             if (!blockChainFileExists) { // Starting from scratch
                 try {
+                    final long earliestKeyCreationTime = wallet.getEarliestKeyCreationTime();
                     final InputStream checkpointsFileIn = getAssets().open("checkpoints");
-                    CheckpointManager.checkpoint(Constants.NETWORK_PARAMETERS, checkpointsFileIn, blockStore, 1367041305);
+                    CheckpointManager.checkpoint(Constants.NETWORK_PARAMETERS, checkpointsFileIn, blockStore, earliestKeyCreationTime);
                 } catch (IOException e) {
                     Log.d("Litecoin", "Couldn't find checkpoints file; starting from genesis");
                 }
