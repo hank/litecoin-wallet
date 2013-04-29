@@ -24,7 +24,6 @@ import android.os.Build;
 /**
  * @author Andreas Schildbach
  */
-@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public final class GingerbreadCameraInterface implements CameraInterface
 {
 	public Camera open()

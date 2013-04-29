@@ -70,7 +70,7 @@ public class WalletApplication extends Application
 	private ActivityManager activityManager;
 
 	private static final Charset UTF_8 = Charset.forName("UTF-8");
-	private static final String TAG = WalletApplication.class.getSimpleName();
+	private static final String TAG = "Litecoin"+WalletApplication.class.getSimpleName();
 
 	@Override
 	public void onCreate()
@@ -253,7 +253,6 @@ public class WalletApplication extends Application
 		try
 		{
 			final Wallet wallet = readKeys(openFileInput(Constants.WALLET_KEY_BACKUP_BASE58));
-
 			resetBlockchain();
 
 			Toast.makeText(this, R.string.toast_wallet_reset, Toast.LENGTH_LONG).show();
@@ -399,8 +398,11 @@ public class WalletApplication extends Application
 	public void resetBlockchain()
 	{
 		// actually stops the service
+        Log.d("Litecoin", "Sending blockchain service reset intent");
 		startService(blockchainServiceResetBlockchainIntent);
+        android.os.Process.killProcess(android.os.Process.myPid());
 	}
+
 
 	public final int applicationVersionCode()
 	{

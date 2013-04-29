@@ -17,8 +17,6 @@
 
 package de.schildbach.wallet.litecoin.ui;
 
-import java.math.BigInteger;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -26,14 +24,14 @@ import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.view.Window;
 import android.webkit.WebView;
-
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.google.litecoin.uri.LitecoinURI;
 import com.google.litecoin.uri.LitecoinURIParseException;
-
 import de.schildbach.wallet.litecoin.R;
+
+import java.math.BigInteger;
 
 /**
  * @author Andreas Schildbach

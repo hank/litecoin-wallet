@@ -34,11 +34,11 @@
         <module name="wallet" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="base" target="1.5" />
-      <module name="integration-android" target="1.5" />
-      <module name="sample-integration-android" target="1.5" />
-      <module name="wallet" target="1.5" />
+    <bytecodeTargetLevel target="1.6">
+      <module name="base" target="1.6" />
+      <module name="integration-android" target="1.6" />
+      <module name="sample-integration-android" target="1.6" />
+      <module name="wallet" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

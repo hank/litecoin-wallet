@@ -108,7 +108,7 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 
 	private static final long APPWIDGET_THROTTLE_MS = DateUtils.SECOND_IN_MILLIS;
 
-	private static final String TAG = BlockchainServiceImpl.class.getSimpleName();
+	private static final String TAG = "Litecoin"+BlockchainServiceImpl.class.getSimpleName();
 
 	private final WalletEventListener walletEventListener = new ThrottelingWalletChangeListener(APPWIDGET_THROTTLE_MS)
 	{
@@ -645,6 +645,7 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 
 		if (BlockchainService.ACTION_RESET_BLOCKCHAIN.equals(intent.getAction()))
 		{
+            Log.d(TAG, "resetting blockchain");
 			resetBlockchainOnShutdown = true;
 			stopSelf();
 		}

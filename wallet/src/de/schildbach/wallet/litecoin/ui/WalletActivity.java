@@ -788,6 +788,7 @@ public final class WalletActivity extends AbstractWalletActivity
 					public void onClick(final DialogInterface dialog, final int id)
 					{
 						getWalletApplication().resetBlockchain();
+                        getWalletApplication().stopBlockchainService();
 						finish();
 					}
 				});
