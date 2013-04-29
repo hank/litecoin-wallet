@@ -12,7 +12,7 @@
 			android:key="connectivity_notification"
 			android:summary="@string/preferences_connectivity_notification_summary"
 			android:title="@string/preferences_connectivity_notification_title" />
-
+<!--   This was crashing the app pretty horribly: ANR.  -EKG
 		<EditTextPreference
 			android:key="trusted_peer"
 			android:summary="@string/preferences_trusted_peer_summary"
@@ -23,6 +23,7 @@
 			android:key="trusted_peer_only"
 			android:summary="@string/preferences_trusted_peer_only_summary"
 			android:title="@string/preferences_trusted_peer_only_title" />
+-->
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/preferences_category_diagnostics" >
 		<Preference

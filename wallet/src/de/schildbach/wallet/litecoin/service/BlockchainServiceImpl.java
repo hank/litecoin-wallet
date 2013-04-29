@@ -17,11 +17,7 @@
 
 package de.schildbach.wallet.litecoin.service;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
@@ -59,21 +55,9 @@ import android.support.v4.app.NotificationCompat;
 import android.text.format.DateUtils;
 import android.util.Log;
 
-import com.google.litecoin.core.AbstractPeerEventListener;
-import com.google.litecoin.core.Address;
-import com.google.litecoin.core.Block;
-import com.google.litecoin.core.BlockChain;
-import com.google.litecoin.core.Peer;
-import com.google.litecoin.core.PeerEventListener;
-import com.google.litecoin.core.PeerGroup;
-import com.google.litecoin.core.ScriptException;
-import com.google.litecoin.core.StoredBlock;
-import com.google.litecoin.core.Transaction;
+import com.google.litecoin.core.*;
 import com.google.litecoin.core.TransactionConfidence.ConfidenceType;
-import com.google.litecoin.core.TransactionInput;
-import com.google.litecoin.core.Wallet;
 import com.google.litecoin.core.Wallet.BalanceType;
-import com.google.litecoin.core.WalletEventListener;
 import com.google.litecoin.discovery.DnsDiscovery;
 import com.google.litecoin.discovery.IrcDiscovery;
 import com.google.litecoin.discovery.PeerDiscovery;
@@ -124,7 +108,7 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 
 	private static final long APPWIDGET_THROTTLE_MS = DateUtils.SECOND_IN_MILLIS;
 
-	private static final String TAG = BlockchainServiceImpl.class.getSimpleName();
+	private static final String TAG = "Litecoin"+BlockchainServiceImpl.class.getSimpleName();
 
 	private final WalletEventListener walletEventListener = new ThrottelingWalletChangeListener(APPWIDGET_THROTTLE_MS)
 	{
@@ -590,7 +574,7 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 		registerReceiver(connectivityReceiver, intentFilter);
 
 		blockChainFile = new File(getDir("blockstore", Context.MODE_WORLD_READABLE | Context.MODE_WORLD_WRITEABLE), Constants.BLOCKCHAIN_FILENAME);
-		final boolean blockChainFileExists = blockChainFile.exists();
+        final boolean blockChainFileExists = blockChainFile.exists();
 
 		if (!blockChainFileExists)
 		{
@@ -603,6 +587,15 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 		try
 		{
 			blockStore = new SPVBlockStore(Constants.NETWORK_PARAMETERS, blockChainFile);
+            if (!blockChainFileExists) { // Starting from scratch
+                try {
+                    final long earliestKeyCreationTime = wallet.getEarliestKeyCreationTime();
+                    final InputStream checkpointsFileIn = getAssets().open("checkpoints");
+                    CheckpointManager.checkpoint(Constants.NETWORK_PARAMETERS, checkpointsFileIn, blockStore, earliestKeyCreationTime);
+                } catch (IOException e) {
+                    Log.d("Litecoin", "Couldn't find checkpoints file; starting from genesis");
+                }
+            }
 			blockStore.getChainHead(); // detect corruptions as early as possible
 		}
 		catch (final BlockStoreException x)
@@ -652,6 +645,7 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 
 		if (BlockchainService.ACTION_RESET_BLOCKCHAIN.equals(intent.getAction()))
 		{
+            Log.d(TAG, "resetting blockchain");
 			resetBlockchainOnShutdown = true;
 			stopSelf();
 		}

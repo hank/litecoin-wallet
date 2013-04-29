@@ -25,6 +25,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.RejectedExecutionException;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -43,6 +44,7 @@ import android.support.v4.content.Loader;
 import android.text.SpannableStringBuilder;
 import android.text.format.DateUtils;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -63,6 +65,7 @@ import de.schildbach.wallet.litecoin.WalletApplication;
 import de.schildbach.wallet.litecoin.util.ThrottelingWalletChangeListener;
 import de.schildbach.wallet.litecoin.util.WalletUtils;
 import de.schildbach.wallet.litecoin.R;
+import org.spongycastle.crypto.tls.TlsAgreementCredentials;
 
 /**
  * @author Andreas Schildbach
@@ -305,6 +308,7 @@ public class TransactionsListFragment extends SherlockListFragment implements Lo
 
 			this.wallet = wallet;
 			this.direction = direction;
+
 		}
 
 		@Override
@@ -358,7 +362,15 @@ public class TransactionsListFragment extends SherlockListFragment implements Lo
 			@Override
 			public void onThrotteledWalletChanged()
 			{
-				forceLoad();
+                try {
+				    forceLoad();
+                } catch(RejectedExecutionException e)
+                {
+                    // I don't know how I can set the policy on this underneath AsyncTaskLoader
+                    // Ideally, I'd like to use ThreadPoolExecutor.DiscardOldestPolicy
+                    // This would just kill the oldest task and add this one.
+                    Log.d("Litecoin", "RejectedExecutionException on forceLoad()");
+                }
 			}
 		};
 

@@ -40,6 +40,7 @@ import android.os.Process;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -173,7 +174,7 @@ public final class SendCoinsFragment extends SherlockFragment implements AmountC
 		public void changed()
 		{
 			dismissPopup();
-
+            Log.d("Litecoin", "Amount: " + amountView.getAmount() + ", Fee: " + feeView.getAmount());
 			validateAmounts(false);
 		}
 
@@ -729,6 +730,8 @@ public final class SendCoinsFragment extends SherlockFragment implements AmountC
 			public void run()
 			{
 				final Transaction transaction = wallet.sendCoinsOffline(sendRequest);
+                // Get the size of the transaction
+                Log.d("Litecoin", "Transaction size is " + transaction.getOutputs().size());
 
 				handler.post(new Runnable()
 				{
