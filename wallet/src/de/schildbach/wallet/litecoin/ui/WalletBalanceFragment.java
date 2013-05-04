@@ -218,9 +218,11 @@ public final class WalletBalanceFragment extends Fragment
 			@Override
 			public void onThrotteledWalletChanged()
 			{
-				forceLoad();
+
+                forceLoad();
 			}
 		};
+
 	}
 
 	private final LoaderCallbacks<BigInteger> balanceLoaderCallbacks = new LoaderManager.LoaderCallbacks<BigInteger>()

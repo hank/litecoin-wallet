@@ -605,6 +605,13 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 			x.printStackTrace();
 			throw new Error("blockstore cannot be created", x);
 		}
+        catch (final NullPointerException x)
+        {
+            blockChainFile.delete();
+
+            x.printStackTrace();
+            throw new Error("blockstore cannot be created", x);
+        }
 
 		try
 		{

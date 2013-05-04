@@ -18,11 +18,13 @@
 package de.schildbach.wallet.litecoin.util;
 
 import java.math.BigInteger;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
 import android.os.Handler;
 
+import android.util.Log;
 import com.google.litecoin.core.ECKey;
 import com.google.litecoin.core.Transaction;
 import com.google.litecoin.core.Wallet;
@@ -88,9 +90,13 @@ public abstract class ThrottelingWalletChangeListener implements WalletEventList
 		public void run()
 		{
 			lastMessageTime.set(System.currentTimeMillis());
-
-			onThrotteledWalletChanged();
-		}
+            try {
+			    onThrotteledWalletChanged();
+		    } catch(RejectedExecutionException e)
+            {
+                Log.d("Litecoin", "RejectExecutionException calling onThrotteledWalletChanged");
+            }
+        }
 	};
 
 	public void removeCallbacks()
