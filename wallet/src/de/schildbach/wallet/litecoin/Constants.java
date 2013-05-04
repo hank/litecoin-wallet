@@ -72,8 +72,8 @@ public class Constants
 	public static final String PEER_DISCOVERY_IRC_CHANNEL_PROD = "#litecoin";
 	public static final String PEER_DISCOVERY_IRC_CHANNEL_TEST = "#litecoinTEST3";
 
-	private static final String BLOCKEXPLORER_BASE_URL_PROD = "https://blockexplorer.com/";
-	private static final String BLOCKEXPLORER_BASE_URL_TEST = "https://blockexplorer.com/testnet/";
+	private static final String BLOCKEXPLORER_BASE_URL_PROD = "http://explorer.litecoin.net/";
+	private static final String BLOCKEXPLORER_BASE_URL_TEST = "http://explorer.litecoin.net/";
 	public static final String BLOCKEXPLORER_BASE_URL = TEST ? BLOCKEXPLORER_BASE_URL_TEST : BLOCKEXPLORER_BASE_URL_PROD;
 
 	public static final String MIMETYPE_TRANSACTION = "application/x-ltctx";
@@ -99,22 +99,22 @@ public class Constants
 	public static final int LTC_PRECISION = 8;
 	public static final int LOCAL_PRECISION = 4;
 
-	public static final String DONATION_ADDRESS = "169EnuJgJf3L31cSkMLBm5hHvk42s8Qi4C";
+	public static final String DONATION_ADDRESS = "LerikguvK4nTvhk5XUp8ofg2JgLqAGnBV3";
 	public static final String REPORT_EMAIL = "ralree@gmail.com";
 	public static final String REPORT_SUBJECT_ISSUE = "Reported issue";
 	public static final String REPORT_SUBJECT_CRASH = "Crash report";
 
 	public static final String LICENSE_URL = "http://www.gnu.org/licenses/gpl-3.0.txt";
-	public static final String SOURCE_URL = "http://code.google.com/p/litecoin-wallet/";
-	public static final String BINARY_URL = "http://code.google.com/p/litecoin-wallet/downloads/list";
+	public static final String SOURCE_URL = "https://github.com/hank/litecoin-wallet";
+	public static final String BINARY_URL = "https://github.com/hank/litecoin-wallet";
 	public static final String CREDITS_LITECOINJ_URL = "http://code.google.com/p/litecoinj/";
 	public static final String CREDITS_ZXING_URL = "http://code.google.com/p/zxing/";
 	public static final String CREDITS_ICON_URL = "http://forum.litecoin.net/index.php?topic=1134.0";
-	public static final String AUTHOR_TWITTER_URL = "https://twitter.com/#!/litecoin_wallet";
+	public static final String AUTHOR_TWITTER_URL = "https://twitter.com/#!/bitcoins4life";
 	public static final String AUTHOR_GOOGLEPLUS_URL = "https://profiles.google.com/hardware.hank";
 	public static final String MARKET_APP_URL = "market://details?id=%s";
 	public static final String WEBMARKET_APP_URL = "https://play.google.com/store/apps/details?id=%s";
-	public static final String MARKET_PUBLISHER_URL = "market://search?q=pub:\"Andreas Schildbach\"";
+	public static final String MARKET_PUBLISHER_URL = "market://search?q=pub:\"Joint Security Area\"";
 
 	private static final String VERSION_URL_PROD = "http://wallet.schildbach.de/version";
 	private static final String VERSION_URL_TEST = "http://wallet.schildbach.de/version_test";
