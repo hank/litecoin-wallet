@@ -753,7 +753,7 @@ public final class SendCoinsFragment extends SherlockFragment implements AmountC
                     Log.i("LitecoinSendCoins", "Recalculated fee: " +
                             sendRequest.fee.toString() + " < " + nPayFee.max(nMinFee).toString());
                     sendRequest.fee = nPayFee.max(nMinFee);
-                }
+
                 new AlertDialog.Builder(SendCoinsFragment.this.getActivity())
                         .setMessage("Transaction requires fee of " +
                                 new BigDecimal(sendRequest.fee).divide(new BigDecimal("100000000")) + ".  Continue?")
@@ -781,17 +781,17 @@ public final class SendCoinsFragment extends SherlockFragment implements AmountC
                                     }
                                 })
                         .show();
-
-                // No fee recalculation necessary
-                // Process the transaction
-//                try {
-//                    wallet.commitTx(sendRequest.tx);
-//                    sent = true;
-//                } catch (VerificationException e) {
-//                    Log.i("LitecoinSendCoins", "VerificationException: " + e);
-//                    return;
-//                }
-//                handler.post(new TransactionRunnable(transaction));
+                } else {
+                    // No fee recalculation necessary
+                    // Process the transaction
+                    try {
+                        wallet.commitTx(sendRequest.tx);
+                    } catch (VerificationException e) {
+                        Log.i("LitecoinSendCoins", "VerificationException: " + e);
+                        return;
+                    }
+                    handler.post(new TransactionRunnable(transaction));
+                }
 			}
 		});
 	}
