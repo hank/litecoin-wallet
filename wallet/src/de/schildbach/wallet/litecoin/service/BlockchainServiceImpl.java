@@ -58,10 +58,7 @@ import android.util.Log;
 import com.google.litecoin.core.*;
 import com.google.litecoin.core.TransactionConfidence.ConfidenceType;
 import com.google.litecoin.core.Wallet.BalanceType;
-import com.google.litecoin.discovery.DnsDiscovery;
-import com.google.litecoin.discovery.IrcDiscovery;
-import com.google.litecoin.discovery.PeerDiscovery;
-import com.google.litecoin.discovery.PeerDiscoveryException;
+import com.google.litecoin.discovery.*;
 import com.google.litecoin.store.BlockStore;
 import com.google.litecoin.store.BlockStoreException;
 
@@ -388,7 +385,10 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 				final boolean connectTrustedPeerOnly = hasTrustedPeer && prefs.getBoolean(Constants.PREFS_KEY_TRUSTED_PEER_ONLY, false);
 				peerGroup.setMaxConnections(connectTrustedPeerOnly ? 1 : maxConnectedPeers);
 
-				peerGroup.addPeerDiscovery(new PeerDiscovery()
+                // Add SeedPeers
+                peerGroup.addPeerDiscovery(new SeedPeers(Constants.NETWORK_PARAMETERS));
+
+                peerGroup.addPeerDiscovery(new PeerDiscovery()
 				{
 					private final PeerDiscovery normalPeerDiscovery = Constants.TEST ? new IrcDiscovery(Constants.PEER_DISCOVERY_IRC_CHANNEL_TEST)
 							: new DnsDiscovery(Constants.NETWORK_PARAMETERS);
@@ -396,7 +396,6 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 					public InetSocketAddress[] getPeers(final long timeoutValue, final TimeUnit timeoutUnit) throws PeerDiscoveryException
 					{
 						final List<InetSocketAddress> peers = new LinkedList<InetSocketAddress>();
-
 
 						boolean needsTrimPeersWorkaround = false;
 
@@ -431,6 +430,7 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 						normalPeerDiscovery.shutdown();
 					}
 				});
+
 
 				// start peergroup
 				peerGroup.start();

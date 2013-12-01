@@ -816,8 +816,9 @@ public final class WalletActivity extends AbstractWalletActivity
 		try
 		{
 			Constants.EXTERNAL_WALLET_BACKUP_DIR.mkdirs();
+            Date date = new Date();
 			final File file = new File(Constants.EXTERNAL_WALLET_BACKUP_DIR, Constants.EXTERNAL_WALLET_KEY_BACKUP + "-"
-					+ Iso8601Format.newDateFormat().format(new Date()));
+					+ Iso8601Format.newDateFormat().format(date) + "-" + date.getTime());
 
 			final ArrayList<ECKey> keys = wallet.keychain;
 
