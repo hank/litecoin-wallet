@@ -169,7 +169,9 @@
 	<string name="preferences_trusted_peer_summary">IP or hostname of single peer to connect to.</string>
 	<string name="preferences_trusted_peer_only_title">Skip Regular Peer Discovery</string>
 	<string name="preferences_trusted_peer_only_summary">Prevents connecting to any peers besided the trusted peer.</string>
-	<string name="preferences_report_issue_title">Report Issue</string>
+    <string name="preferences_trusted_peer_port_title">Trusted Peer Port</string>
+    <string name="preferences_trusted_peer_port_summary">Port of single peer to connect to.</string>
+    <string name="preferences_report_issue_title">Report Issue</string>
 	<string name="preferences_report_issue_summary">Collect information about your issue and email your report to the developers.</string>
 	<string name="preferences_initiate_reset_title">Reset Blockchain</string>
 	<string name="preferences_initiate_reset_summary">Reset blockchain, transactions and wallet balance. Replay will take a while.</string>

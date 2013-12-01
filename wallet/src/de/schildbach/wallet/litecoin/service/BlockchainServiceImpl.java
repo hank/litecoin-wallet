@@ -380,7 +380,9 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 
 				final int maxConnectedPeers = application.maxConnectedPeers();
 
-				final String trustedPeerHost = prefs.getString(Constants.PREFS_KEY_TRUSTED_PEER, "").trim();
+                final String trustedPeerHost = prefs.getString(Constants.PREFS_KEY_TRUSTED_PEER, "").trim();
+                final String trustedPeerPort = prefs.getString(Constants.PREFS_KEY_TRUSTED_PEER_PORT,
+                                                               Integer.toString(Constants.NETWORK_PARAMETERS.port)).trim();
 				final boolean hasTrustedPeer = trustedPeerHost.length() > 0;
 
 				final boolean connectTrustedPeerOnly = hasTrustedPeer && prefs.getBoolean(Constants.PREFS_KEY_TRUSTED_PEER_ONLY, false);
@@ -395,11 +397,12 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 					{
 						final List<InetSocketAddress> peers = new LinkedList<InetSocketAddress>();
 
+
 						boolean needsTrimPeersWorkaround = false;
 
 						if (hasTrustedPeer)
 						{
-							final InetSocketAddress addr = new InetSocketAddress(trustedPeerHost, Constants.NETWORK_PARAMETERS.port);
+							final InetSocketAddress addr = new InetSocketAddress(trustedPeerHost, new Integer(trustedPeerPort));
 							if (addr.getAddress() != null)
 							{
 								peers.add(addr);

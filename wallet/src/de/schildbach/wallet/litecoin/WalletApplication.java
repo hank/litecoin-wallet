@@ -47,7 +47,6 @@ import android.widget.Toast;
 import com.google.litecoin.core.Address;
 import com.google.litecoin.core.ECKey;
 import com.google.litecoin.core.Wallet;
-import com.google.litecoin.core.Wallet.AutosaveEventListener;
 import com.google.litecoin.store.WalletProtobufSerializer;
 
 import de.schildbach.wallet.litecoin.service.BlockchainService;
@@ -108,7 +107,7 @@ public class WalletApplication extends Application
 		wallet.autosaveToFile(walletFile, 1, TimeUnit.SECONDS, new WalletAutosaveEventListener());
 	}
 
-	private static final class WalletAutosaveEventListener implements AutosaveEventListener
+	private static final class WalletAutosaveEventListener implements Wallet.AutosaveEventListener
 	{
 		public boolean caughtException(final Throwable t)
 		{

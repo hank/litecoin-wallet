@@ -2,13 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />
-    <excludeFromCompile>
-      <directory url="file://$PROJECT_DIR$/wallet/target/generated-sources/r" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/wallet/target/generated-sources/aidl" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/sample-integration-android/target/generated-sources/r" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/wallet/gen-external-apklibs/com.actionbarsherlock_library_4.1.0/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/sample-integration-android/target/generated-sources/aidl" includeSubdirectories="true" />
-    </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
@@ -34,7 +27,7 @@
         <module name="wallet" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.6">
+    <bytecodeTargetLevel>
       <module name="base" target="1.5" />
       <module name="integration-android" target="1.5" />
       <module name="sample-integration-android" target="1.5" />
