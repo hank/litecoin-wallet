@@ -303,7 +303,7 @@ public final class ScanActivity extends Activity implements SurfaceHolder.Callba
 				final int sourceHeight = source.getHeight();
 
 				final Bitmap grayscaleBitmap = Bitmap.createBitmap(sourceWidth, sourceHeight, Bitmap.Config.ARGB_8888);
-				grayscaleBitmap.setPixels(source.renderCroppedGreyscaleBitmap(), 0, sourceWidth, 0, 0, sourceWidth, sourceHeight);
+				grayscaleBitmap.setPixels(source.renderThumbnail(), 0, sourceWidth, 0, 0, sourceWidth, sourceHeight);
 
 				runOnUiThread(new Runnable()
 				{

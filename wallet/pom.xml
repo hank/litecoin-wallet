@@ -67,8 +67,15 @@
 		<dependency>
 			<groupId>com.google.zxing</groupId>
 			<artifactId>core</artifactId>
-			<version>2.1</version>
+			<version>2.2</version>
 		</dependency>
+
+        <!-- com.google.zxing.integration -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>android-integration</artifactId>
+            <version>2.2</version>
+        </dependency>
 
 		<!-- org.slf4j.* -->
 		<dependency>

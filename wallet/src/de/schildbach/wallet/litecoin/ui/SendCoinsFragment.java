@@ -17,6 +17,7 @@
 
 package de.schildbach.wallet.litecoin.ui;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import android.annotation.SuppressLint;
@@ -59,19 +60,14 @@ import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.litecoin.core.Address;
-import com.google.litecoin.core.AddressFormatException;
-import com.google.litecoin.core.NetworkParameters;
-import com.google.litecoin.core.Sha256Hash;
-import com.google.litecoin.core.Transaction;
-import com.google.litecoin.core.TransactionConfidence;
+import com.google.litecoin.core.*;
 import com.google.litecoin.core.TransactionConfidence.ConfidenceType;
-import com.google.litecoin.core.Wallet;
 import com.google.litecoin.core.Wallet.BalanceType;
 import com.google.litecoin.core.Wallet.SendRequest;
 import com.google.litecoin.uri.LitecoinURI;
 import com.google.litecoin.uri.LitecoinURIParseException;
 
+import com.google.zxing.integration.android.IntentIntegrator;
 import de.schildbach.wallet.litecoin.AddressBookProvider;
 import de.schildbach.wallet.litecoin.Constants;
 import de.schildbach.wallet.litecoin.WalletApplication;
@@ -729,50 +725,112 @@ public final class SendCoinsFragment extends SherlockFragment implements AmountC
 		{
 			public void run()
 			{
-				final Transaction transaction = wallet.sendCoinsOffline(sendRequest);
+				//final Transaction transaction = wallet.sendCoinsOffline(sendRequest);
+                // Multi-part transaction creation to properly calculate fee
+                final Transaction transaction = wallet.createSend(sendRequest);
+                int txSize = transaction.getOutputs().size();
                 // Get the size of the transaction
-                Log.d("Litecoin", "Transaction size is " + transaction.getOutputs().size());
+                Log.d("Litecoin", "Transaction size is " + txSize);
+                /* From official Litecoin wallet.cpp
+                    // Check that enough fee is included
+                    int64_t nPayFee = nTransactionFee * (1 + (int64_t)nBytes / 1000);
+                    bool fAllowFree = AllowFree(dPriority);
+                    int64_t nMinFee = GetMinFee(wtxNew, nBytes, fAllowFree, GMF_SEND);
+                    if (nFeeRet < max(nPayFee, nMinFee))
+                    {
+                        nFeeRet = max(nPayFee, nMinFee);
+                        continue;
+                    }
+                    nTransactionFee is the client setting for transaction fees.  This is our default.
+                    nMinFee is just the minimum fee.  10000 Satoshis in official source.
+                */
+                BigInteger nTransactionFee = Constants.DEFAULT_TX_FEE;
+                BigInteger nMinFee = Constants.DEFAULT_TX_FEE;
+                BigInteger multiplicand = new BigInteger(Integer.toString(1 + txSize / 1000));
+                BigInteger nPayFee = nTransactionFee.multiply(multiplicand);
+                if(sendRequest.fee.compareTo(nPayFee.max(nMinFee)) < 0)
+                {
+                    Log.i("LitecoinSendCoins", "Recalculated fee: " +
+                            sendRequest.fee.toString() + " < " + nPayFee.max(nMinFee).toString());
+                    sendRequest.fee = nPayFee.max(nMinFee);
+                }
+                new AlertDialog.Builder(SendCoinsFragment.this.getActivity())
+                        .setMessage("Transaction requires fee of " +
+                                new BigDecimal(sendRequest.fee).divide(new BigDecimal("100000000")) + ".  Continue?")
+                        .setTitle("Extra fee needed")
+                        .setCancelable(true)
+                        .setNeutralButton(android.R.string.cancel,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                        startActivity(new Intent(getActivity(), WalletActivity.class));
+                                        getActivity().finish();
+                                    }
+                                })
+                        .setPositiveButton(android.R.string.ok,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        try {
+                                            wallet.commitTx(sendRequest.tx);
+                                        } catch (VerificationException e) {
+                                            Log.i("LitecoinSendCoins", "VerificationException: " + e);
+                                            return;
+                                        }
+                                        // Fees are agreeable
+                                        // Process the transaction
+                                        handler.post(new TransactionRunnable(transaction));
+                                    }
+                                })
+                        .show();
 
-				handler.post(new Runnable()
-				{
-					public void run()
-					{
-						if (transaction != null)
-						{
-							sentTransaction = transaction;
-
-							state = State.SENDING;
-							updateView();
-
-							sentTransaction.getConfidence().addEventListener(sentTransactionConfidenceListener);
-
-							service.broadcastTransaction(sentTransaction);
-
-							final Intent result = new Intent();
-							LitecoinIntegration.transactionHashToResult(result, sentTransaction.getHashAsString());
-							activity.setResult(Activity.RESULT_OK, result);
-
-							// final String label = AddressBookProvider.resolveLabel(contentResolver,
-							// validatedAddress.toString());
-							// if (label == null)
-							// showAddAddressDialog(validatedAddress.toString(), receivingLabel);
-						}
-						else
-						{
-							state = State.FAILED;
-							updateView();
-
-							activity.longToast(R.string.send_coins_error_msg);
-						}
-					}
-				});
+                // No fee recalculation necessary
+                // Process the transaction
+//                try {
+//                    wallet.commitTx(sendRequest.tx);
+//                    sent = true;
+//                } catch (VerificationException e) {
+//                    Log.i("LitecoinSendCoins", "VerificationException: " + e);
+//                    return;
+//                }
+//                handler.post(new TransactionRunnable(transaction));
 			}
 		});
 	}
 
+    class TransactionRunnable implements Runnable {
+
+        Transaction transaction;
+
+        TransactionRunnable(Transaction transaction) {
+            this.transaction = transaction;
+        }
+
+        public void run()
+        {
+            sentTransaction = transaction;
+
+            state = State.SENDING;
+            updateView();
+
+            sentTransaction.getConfidence().addEventListener(sentTransactionConfidenceListener);
+
+            service.broadcastTransaction(sentTransaction);
+
+            final Intent result = new Intent();
+            LitecoinIntegration.transactionHashToResult(result, sentTransaction.getHashAsString());
+            activity.setResult(Activity.RESULT_OK, result);
+
+            // final String label = AddressBookProvider.resolveLabel(contentResolver,
+            // validatedAddress.toString());
+            // if (label == null)
+            // showAddAddressDialog(validatedAddress.toString(), receivingLabel);
+        }
+    }
+
 	private void handleScan()
 	{
-		startActivityForResult(new Intent(activity, ScanActivity.class), REQUEST_CODE_SCAN);
+        IntentIntegrator integrator = new IntentIntegrator(getActivity());
+        integrator.initiateScan();
+		//startActivityForResult(new Intent(activity, ScanActivity.class), REQUEST_CODE_SCAN);
 	}
 
 	public class AutoCompleteAddressAdapter extends CursorAdapter

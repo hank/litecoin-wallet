@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.webkit.WebView;
 import com.actionbarsherlock.app.ActionBar;
@@ -29,6 +30,8 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.google.litecoin.uri.LitecoinURI;
 import com.google.litecoin.uri.LitecoinURIParseException;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import de.schildbach.wallet.litecoin.R;
 
 import java.math.BigInteger;
@@ -151,4 +154,30 @@ public final class SendCoinsActivity extends AbstractWalletActivity
 
 		sendCoinsFragment.update(receivingAddress, receivingLabel, amount);
 	}
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanResult != null) {
+            Log.d("Litecoin", "SCAN RESULT:" + scanResult.getContents());
+            try {
+                final LitecoinURI uri = new LitecoinURI(null, scanResult.getContents());
+                Log.d("Litecoin", "URI: " + uri.getAddress().toString() + " " + uri.getLabel() + " " + uri.getAmount());
+                updateSendCoinsFragment(uri.getAddress().toString(), uri.getLabel(), uri.getAmount());
+            }
+            catch (final LitecoinURIParseException x)
+            {
+                // Try prepending litecoin:
+                try {
+                    final LitecoinURI uri = new LitecoinURI(null, "litecoin:" + scanResult.getContents());
+                    Log.d("Litecoin", "URI: " + uri.getAddress().toString() + " " + uri.getLabel() + " " + uri.getAmount());
+                    updateSendCoinsFragment(uri.getAddress().toString(), uri.getLabel(), uri.getAmount());
+                }
+                catch (final LitecoinURIParseException y)
+                {
+                    parseErrorDialog(scanResult.getContents());
+                    return;
+                }
+            }
+        }
+    }
 }
