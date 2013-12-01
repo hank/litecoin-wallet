@@ -276,7 +276,7 @@ public class WalletUtils
 
 				final String[] parts = line.split(" ");
 
-				final ECKey key = new DumpedPrivateKey(Constants.NETWORK_PARAMETERS, parts[0]).getKey();
+				final ECKey key = new DumpedPrivateKey(Constants.NETWORK_PARAMETERS, parts[0], false).getKey();
 				key.setCreationTimeSeconds(parts.length >= 2 ? format.parse(parts[1]).getTime() / DateUtils.SECOND_IN_MILLIS : 0);
 
 				keys.add(key);

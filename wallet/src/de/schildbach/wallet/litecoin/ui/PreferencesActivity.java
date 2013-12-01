@@ -43,8 +43,8 @@ import de.schildbach.wallet.litecoin.R;
 public final class PreferencesActivity extends SherlockPreferenceActivity implements OnPreferenceChangeListener
 {
 	private WalletApplication application;
-	//private Preference trustedPeerPreference;
-	//private Preference trustedPeerOnlyPreference;
+	private Preference trustedPeerPreference;
+	private Preference trustedPeerOnlyPreference;
 
 	private static final String PREFS_KEY_REPORT_ISSUE = "report_issue";
 	private static final String PREFS_KEY_INITIATE_RESET = "initiate_reset";
@@ -57,25 +57,24 @@ public final class PreferencesActivity extends SherlockPreferenceActivity implem
 		application = (WalletApplication) getApplication();
 
 		addPreferencesFromResource(R.xml.preferences);
-/*
 		trustedPeerPreference = findPreference(Constants.PREFS_KEY_TRUSTED_PEER);
 		trustedPeerPreference.setOnPreferenceChangeListener(this);
 
 		trustedPeerOnlyPreference = findPreference(Constants.PREFS_KEY_TRUSTED_PEER_ONLY);
 		trustedPeerOnlyPreference.setOnPreferenceChangeListener(this);
-*/
+
 		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
 		final SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
-		//final String trustedPeer = prefs.getString(Constants.PREFS_KEY_TRUSTED_PEER, "").trim();
-		//updateTrustedPeer(trustedPeer);
+		final String trustedPeer = prefs.getString(Constants.PREFS_KEY_TRUSTED_PEER, "").trim();
+		updateTrustedPeer(trustedPeer);
 	}
 
 	@Override
 	protected void onDestroy()
 	{
-		//trustedPeerPreference.setOnPreferenceChangeListener(null);
+		trustedPeerPreference.setOnPreferenceChangeListener(null);
 
 		super.onDestroy();
 	}
@@ -169,7 +168,7 @@ public final class PreferencesActivity extends SherlockPreferenceActivity implem
 
 	public boolean onPreferenceChange(final Preference preference, final Object newValue)
 	{
-/*		if (preference.equals(trustedPeerPreference))
+		if (preference.equals(trustedPeerPreference))
 		{
 			application.stopBlockchainService();
 			updateTrustedPeer((String) newValue);
@@ -177,14 +176,14 @@ public final class PreferencesActivity extends SherlockPreferenceActivity implem
 		else if (preference.equals(trustedPeerOnlyPreference))
 		{
 			application.stopBlockchainService();
-		}*/
+		}
 
 		return true;
 	}
 
 	private void updateTrustedPeer(final String trustedPeer)
 	{
-/*		if (trustedPeer.length() == 0)
+		if (trustedPeer.length() == 0)
 		{
 			trustedPeerPreference.setSummary(R.string.preferences_trusted_peer_summary);
 			trustedPeerOnlyPreference.setEnabled(false);
@@ -193,6 +192,6 @@ public final class PreferencesActivity extends SherlockPreferenceActivity implem
 		{
 			trustedPeerPreference.setSummary(trustedPeer);
 			trustedPeerOnlyPreference.setEnabled(true);
-		}*/
+		}
 	}
 }
