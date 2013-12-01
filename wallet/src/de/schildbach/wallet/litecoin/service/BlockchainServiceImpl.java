@@ -385,13 +385,14 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 				final boolean connectTrustedPeerOnly = hasTrustedPeer && prefs.getBoolean(Constants.PREFS_KEY_TRUSTED_PEER_ONLY, false);
 				peerGroup.setMaxConnections(connectTrustedPeerOnly ? 1 : maxConnectedPeers);
 
-                // Add SeedPeers
-                peerGroup.addPeerDiscovery(new SeedPeers(Constants.NETWORK_PARAMETERS));
+
 
                 peerGroup.addPeerDiscovery(new PeerDiscovery()
 				{
 					private final PeerDiscovery normalPeerDiscovery = Constants.TEST ? new IrcDiscovery(Constants.PEER_DISCOVERY_IRC_CHANNEL_TEST)
 							: new DnsDiscovery(Constants.NETWORK_PARAMETERS);
+                    // ASeedPeers
+                    private final PeerDiscovery seedPeers = new SeedPeers(Constants.NETWORK_PARAMETERS);
 
 					public InetSocketAddress[] getPeers(final long timeoutValue, final TimeUnit timeoutUnit) throws PeerDiscoveryException
 					{
@@ -410,8 +411,15 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 						}
 
 						if (!connectTrustedPeerOnly) {
+                            List discoveredpeers;
                             try {
-                                List discoveredpeers = Arrays.asList(normalPeerDiscovery.getPeers(timeoutValue, timeoutUnit));
+                                discoveredpeers = Arrays.asList(seedPeers.getPeers(timeoutValue, timeoutUnit));
+                                peers.addAll(discoveredpeers);
+                            } catch (PeerDiscoveryException e) {
+                                Log.i(TAG, "Failed to discover peers: " + e.getMessage());
+                            }
+                            try {
+                                discoveredpeers = Arrays.asList(normalPeerDiscovery.getPeers(timeoutValue, timeoutUnit));
 							    peers.addAll(discoveredpeers);
                             } catch (PeerDiscoveryException e) {
                                 Log.i(TAG, "Failed to discover peers: " + e.getMessage());
