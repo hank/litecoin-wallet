@@ -772,8 +772,10 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 
 	public void broadcastTransaction(final Transaction tx)
 	{
-		if (peerGroup != null)
-			peerGroup.broadcastTransaction(tx);
+		if (peerGroup != null) {
+            // Only require 1 peer to broadcast
+			peerGroup.broadcastTransaction(tx, 1);
+        }
 	}
 
 	public List<Peer> getConnectedPeers()
