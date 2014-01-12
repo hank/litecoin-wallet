@@ -217,5 +217,11 @@
 	<string name="time_today">today</string>
 	<string name="address_unlabeled">(unlabeled)</string>
     <string name="under_construction">Under Construction...</string>
+    <string name="update_dialog_message_1">A new, updated official version of this app is available on Google Play! To
+        upgrade and maintain your current wallet, you\'ll need to perform several steps. First, make a backup of your
+        wallet by clicking \"Backup\" below.
+    </string>
+    <string name="button_install_new_app">Install New Litecoin Wallet</string>
+    <string name="button_import_into_new_app">Import keys into new Litecoin app</string>
 
 </resources>

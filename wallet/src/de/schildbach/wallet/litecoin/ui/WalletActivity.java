@@ -19,6 +19,7 @@ package de.schildbach.wallet.litecoin.ui;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -34,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,6 +47,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -55,6 +58,7 @@ import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -67,6 +71,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import android.widget.Toast;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.google.litecoin.core.ECKey;
@@ -76,6 +81,7 @@ import de.schildbach.wallet.litecoin.Constants;
 import de.schildbach.wallet.litecoin.WalletApplication;
 import de.schildbach.wallet.litecoin.util.CrashReporter;
 import de.schildbach.wallet.litecoin.util.EncryptionUtils;
+import de.schildbach.wallet.litecoin.util.IOUtils;
 import de.schildbach.wallet.litecoin.util.Iso8601Format;
 import de.schildbach.wallet.litecoin.util.WalletUtils;
 import de.schildbach.wallet.litecoin.R;
@@ -85,11 +91,15 @@ import de.schildbach.wallet.litecoin.R;
  */
 public final class WalletActivity extends AbstractWalletActivity
 {
+    private static final String TAG = WalletActivity.class.getName();
 	private static final int DIALOG_HELP = 0;
 	public static final int DIALOG_SAFETY = 1;
 	private static final int DIALOG_IMPORT_KEYS = 2;
 	private static final int DIALOG_EXPORT_KEYS = 3;
 	private static final int DIALOG_ALERT_OLD_SDK = 4;
+
+    private static final int DIALOG_NEXT_INITIATE_IMPORT = 1;
+    private static final int DIALOG_NEXT_GET_NEW_APP = 2;
 
 	private WalletApplication application;
 	private Wallet wallet;
@@ -109,9 +119,75 @@ public final class WalletActivity extends AbstractWalletActivity
 		checkAlerts();
 
 		touchLastUsed();
+
+        checkUpdateNotify();
 	}
 
-	@Override
+    /* Pops dialogs to guide the user to update */
+    private void checkUpdateNotify() {
+        // See if we have the new wallet
+        boolean haveNewWallet = false;
+        PackageManager pm = getPackageManager();
+        List<PackageInfo> packages = pm.getInstalledPackages(0);
+        for (PackageInfo pi : packages) {
+            if(pi.packageName.equals("de.schildbach.wallet_ltc") &&
+                    pi.versionCode >= 150) {
+                // This is the new LTC wallet
+                // Since it's installed, the next action after backup is
+                // import.
+                haveNewWallet = true;
+                break;
+            }
+        }
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        // set title
+        alertDialogBuilder.setTitle("Critical Update");
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(R.string.update_dialog_message_1)
+                .setCancelable(true)
+                .setNegativeButton("Upgrade later",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+
+        if(!haveNewWallet) {
+            // We don't have the new wallet yet.
+            // The action after backup is directing the user to Play
+            alertDialogBuilder
+                .setPositiveButton("Backup",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // Initiate backup with flag to indicate what to do next
+                        final Bundle args = new Bundle();
+                        args.putInt("next", DIALOG_NEXT_GET_NEW_APP);
+                        showDialog(DIALOG_EXPORT_KEYS, args);
+                    }
+                });
+        } else {
+            alertDialogBuilder
+                .setPositiveButton("Backup", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Initiate backup with flag to indicate what to do next
+                        final Bundle args = new Bundle();
+                        args.putInt("next", DIALOG_NEXT_INITIATE_IMPORT);
+                        showDialog(DIALOG_EXPORT_KEYS, args);                    }
+               }); 
+        }
+
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
+
+    @Override
 	protected void onResume()
 	{
 		super.onResume();
@@ -225,12 +301,12 @@ public final class WalletActivity extends AbstractWalletActivity
 	}
 
 	@Override
-	protected Dialog onCreateDialog(final int id)
+	protected Dialog onCreateDialog(final int id, Bundle args)
 	{
 		if (id == DIALOG_IMPORT_KEYS)
 			return createImportKeysDialog();
 		else if (id == DIALOG_EXPORT_KEYS)
-			return createExportKeysDialog();
+			return createExportKeysDialog(args);
 		else if (id == DIALOG_HELP)
 			return createWebViewDialog("file:///android_asset/help" + languagePrefix() + ".html");
 		else if (id == DIALOG_SAFETY)
@@ -246,8 +322,9 @@ public final class WalletActivity extends AbstractWalletActivity
 	{
 		if (id == DIALOG_IMPORT_KEYS)
 			prepareImportKeysDialog(dialog);
-		else if (id == DIALOG_EXPORT_KEYS)
+		else if (id == DIALOG_EXPORT_KEYS) {
 			prepareExportKeysDialog(dialog);
+        }
 	}
 
 	private Dialog createImportKeysDialog()
@@ -360,7 +437,7 @@ public final class WalletActivity extends AbstractWalletActivity
 		showView.setOnCheckedChangeListener(new ShowPasswordCheckListener(passwordView));
 	}
 
-	private Dialog createExportKeysDialog()
+	private Dialog createExportKeysDialog(final Bundle args)
 	{
 		final View view = getLayoutInflater().inflate(R.layout.wallet_export_keys_dialog, null);
 		final EditText passwordView = (EditText) view.findViewById(R.id.wallet_export_keys_password);
@@ -376,7 +453,7 @@ public final class WalletActivity extends AbstractWalletActivity
 				final String password = passwordView.getText().toString().trim();
 				passwordView.setText(null); // get rid of it asap
 
-				exportPrivateKeys(password);
+				exportPrivateKeys(password, args);
 			}
 		});
 		builder.setNegativeButton(R.string.button_cancel, new OnClickListener()
@@ -394,9 +471,7 @@ public final class WalletActivity extends AbstractWalletActivity
 			}
 		});
 
-		final AlertDialog dialog = builder.create();
-
-		return dialog;
+        return builder.create();
 	}
 
 	private void prepareExportKeysDialog(final Dialog dialog)
@@ -811,7 +886,7 @@ public final class WalletActivity extends AbstractWalletActivity
 		}
 	}
 
-	private void exportPrivateKeys(final String password)
+	private void exportPrivateKeys(final String password, Bundle args)
 	{
 		try
 		{
@@ -833,8 +908,50 @@ public final class WalletActivity extends AbstractWalletActivity
 			cipherOut.write(cipherText);
 			cipherOut.close();
 
-			new AlertDialog.Builder(this).setInverseBackgroundForced(true).setMessage(getString(R.string.wallet_export_keys_dialog_success, file))
-					.setNeutralButton(R.string.button_dismiss, null).show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setInverseBackgroundForced(true);
+
+            if(args != null) {
+                // Show next action (wallet conversion)
+                if(args.getInt("next") == DIALOG_NEXT_GET_NEW_APP) {
+                    String message = getString(R.string.wallet_export_keys_dialog_success, file);
+                    message += "\nThe next step in the upgrade is getting the new app!\nClick below to go to Play and install it!";
+                    builder
+                        .setMessage(message)
+                        .setNeutralButton(R.string.button_install_new_app, new OnClickListener() {
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                intent.setData(Uri.parse("market://details?id=de.schildbach.wallet_ltc"));
+                                startActivity(intent);
+                            }
+                        });
+                } else if(args.getInt("next") == DIALOG_NEXT_INITIATE_IMPORT) {
+                    String message = getString(R.string.wallet_export_keys_dialog_success, file);
+                    message += "\nSince you already have the new app installed, click below to import your wallet into it!";
+                    builder
+                        .setMessage(message)
+                        .setNeutralButton(R.string.button_import_into_new_app, new OnClickListener() {
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                // Throw import intent to litecoin app
+                                Intent sendIntent = new Intent();
+                                sendIntent.setAction(Intent.ACTION_VIEW);
+                                Uri uri = Uri.fromFile(file);
+                                Log.i(TAG, "URI to file: " + uri);
+                                sendIntent.setDataAndType(uri, "x-litecoin/private-keys");
+                                // Verify that the intent will resolve to an activity
+                                if (sendIntent.resolveActivity(getPackageManager()) != null) {
+                                    startActivity(sendIntent);
+                                }
+                            }
+                        });
+                }
+            } else {
+                // Normal export, just show dismiss
+                builder
+                    .setMessage(getString(R.string.wallet_export_keys_dialog_success, file))
+					.setNeutralButton(R.string.button_dismiss, null);
+            }
+            builder.show();
 		}
 		catch (final IOException x)
 		{

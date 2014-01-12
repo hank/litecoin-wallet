@@ -3,8 +3,8 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	package="de.schildbach.wallet.litecoin"
 	android:installLocation="auto"
-	android:versionCode="10018"
-	android:versionName="1.098" >
+	android:versionCode="10019"
+	android:versionName="1.099" >
 
 	<uses-sdk
 		android:minSdkVersion="8"
@@ -78,21 +78,6 @@
 			android:label="@string/send_coins_activity_title"
 			android:screenOrientation="behind"
 			android:windowSoftInputMode="adjustResize" >
-			<intent-filter android:label="@string/send_coins_activity_title" >
-				<action android:name="android.intent.action.VIEW" />
-
-				<data android:scheme="litecoin" />
-
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="android.intent.category.BROWSABLE" />
-			</intent-filter>
-			<intent-filter android:label="@string/send_coins_activity_title" >
-				<action android:name="android.nfc.action.NDEF_DISCOVERED" />
-
-				<data android:scheme="litecoin" />
-
-				<category android:name="android.intent.category.DEFAULT" />
-			</intent-filter>
 		</activity>
 		<activity
 			android:name=".ui.RequestCoinsActivity"
@@ -105,21 +90,6 @@
 			android:configChanges="keyboard|keyboardHidden"
 			android:label="@string/transaction_activity_title"
 			android:screenOrientation="behind" >
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-
-				<data android:scheme="ltctx" />
-
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="android.intent.category.BROWSABLE" />
-			</intent-filter>
-			<intent-filter>
-				<action android:name="android.nfc.action.NDEF_DISCOVERED" />
-
-				<data android:mimeType="application/x-ltctx" />
-
-				<category android:name="android.intent.category.DEFAULT" />
-			</intent-filter>
 		</activity>
 		<activity
 			android:name=".ui.AddressBookActivity"
