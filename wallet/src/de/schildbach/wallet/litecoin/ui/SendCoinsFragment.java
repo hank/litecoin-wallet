@@ -48,12 +48,7 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.CursorAdapter;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.TextView;
+import android.widget.*;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.ActionMode;
@@ -68,6 +63,8 @@ import com.google.litecoin.uri.LitecoinURI;
 import com.google.litecoin.uri.LitecoinURIParseException;
 
 import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentIntegratorSupportV4;
+import com.google.zxing.integration.android.IntentResult;
 import de.schildbach.wallet.litecoin.AddressBookProvider;
 import de.schildbach.wallet.litecoin.Constants;
 import de.schildbach.wallet.litecoin.WalletApplication;
@@ -504,33 +501,6 @@ public final class SendCoinsFragment extends SherlockFragment implements AmountC
 		super.onDestroy();
 	}
 
-	@Override
-	public void onActivityResult(final int requestCode, final int resultCode, final Intent intent)
-	{
-		if (requestCode == REQUEST_CODE_SCAN && resultCode == Activity.RESULT_OK)
-		{
-			final String contents = intent.getStringExtra(ScanActivity.INTENT_EXTRA_RESULT);
-			if (contents.matches("[a-zA-Z0-9]*"))
-			{
-				update(contents, null, null);
-			}
-			else
-			{
-				try
-				{
-					final LitecoinURI litecoinUri = new LitecoinURI(null, contents);
-					final Address address = litecoinUri.getAddress();
-					final String addressLabel = litecoinUri.getLabel();
-					update(address != null ? address.toString() : null, addressLabel, litecoinUri.getAmount());
-				}
-				catch (final LitecoinURIParseException x)
-				{
-					activity.parseErrorDialog(contents);
-				}
-			}
-		}
-	}
-
 	@SuppressLint("InlinedApi")
 	@Override
 	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater)
@@ -828,10 +798,21 @@ public final class SendCoinsFragment extends SherlockFragment implements AmountC
 
 	private void handleScan()
 	{
-        IntentIntegrator integrator = new IntentIntegrator(getActivity());
+        IntentIntegrator integrator = new IntentIntegratorSupportV4(this);
         integrator.initiateScan();
-		//startActivityForResult(new Intent(activity, ScanActivity.class), REQUEST_CODE_SCAN);
 	}
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanResult != null) {
+            LitecoinURI uri = WalletUtils.parseAddressString(scanResult.getContents());
+            if(uri != null)
+                update(uri.getAddress().toString(), uri.getLabel(), uri.getAmount());
+        }
+    }
+
 
 	public class AutoCompleteAddressAdapter extends CursorAdapter
 	{

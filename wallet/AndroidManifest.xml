@@ -3,8 +3,8 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	package="de.schildbach.wallet.litecoin"
 	android:installLocation="auto"
-	android:versionCode="10016"
-	android:versionName="1.096" >
+	android:versionCode="10018"
+	android:versionName="1.098" >
 
 	<uses-sdk
 		android:minSdkVersion="8"
@@ -149,13 +149,6 @@
 			android:name=".ui.AboutActivity"
 			android:label="@string/about_title"
 			android:screenOrientation="behind" />
-		<activity
-			android:name=".ui.ScanActivity"
-			android:configChanges="orientation|keyboard|keyboardHidden"
-			android:screenOrientation="landscape"
-			android:stateNotNeeded="true"
-			android:theme="@style/My.Theme.Fullscreen"
-			android:windowSoftInputMode="stateAlwaysHidden" />
 
 		<provider
 			android:name=".AddressBookProvider"

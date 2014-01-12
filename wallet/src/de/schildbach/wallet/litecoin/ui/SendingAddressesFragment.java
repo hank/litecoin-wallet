@@ -33,10 +33,14 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter.ViewBinder;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.Menu;
@@ -47,6 +51,9 @@ import com.google.litecoin.core.AddressFormatException;
 import com.google.litecoin.uri.LitecoinURI;
 import com.google.litecoin.uri.LitecoinURIParseException;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentIntegratorSupportV4;
+import com.google.zxing.integration.android.IntentResult;
 import de.schildbach.wallet.litecoin.AddressBookProvider;
 import de.schildbach.wallet.litecoin.Constants;
 import de.schildbach.wallet.litecoin.util.BitmapFragment;
@@ -68,8 +75,9 @@ public final class SendingAddressesFragment extends SherlockListFragment impleme
 	private final Handler handler = new Handler();
 
 	private static final int REQUEST_CODE_SCAN = 0;
+    private Address addressToAdd = null;
 
-	@Override
+    @Override
 	public void onAttach(final Activity activity)
 	{
 		super.onAttach(activity);
@@ -88,7 +96,12 @@ public final class SendingAddressesFragment extends SherlockListFragment impleme
 		setHasOptionsMenu(true);
 	}
 
-	@Override
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
 	public void onActivityCreated(final Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
@@ -115,48 +128,37 @@ public final class SendingAddressesFragment extends SherlockListFragment impleme
 		loaderManager.initLoader(0, null, this);
 	}
 
-	@Override
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(null != this.addressToAdd)
+        {
+            // Starting address to add dialog
+            EditAddressBookEntryFragment.edit(getFragmentManager(), this.addressToAdd.toString());
+        }
+    }
+
+    @Override
 	public void onActivityResult(final int requestCode, final int resultCode, final Intent intent)
 	{
-		if (requestCode == REQUEST_CODE_SCAN && resultCode == Activity.RESULT_OK)
-		{
-			final String contents = intent.getStringExtra(ScanActivity.INTENT_EXTRA_RESULT);
+        super.onActivityResult(requestCode, resultCode, intent);
+        Log.i(this.getClass().toString(), "on Scan Activity Result");
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if(scanResult != null) {
+            LitecoinURI uri = WalletUtils.parseAddressString(scanResult.getContents());
+            if(uri != null) {
+                try
+                {
+                    this.addressToAdd = new Address(Constants.NETWORK_PARAMETERS, uri.getAddress().toString());
 
-			try
-			{
-				final Address address;
-
-				if (contents.matches("[a-zA-Z0-9]*"))
-				{
-					address = new Address(Constants.NETWORK_PARAMETERS, contents);
-				}
-				else
-				{
-					// TODO nicer cross-network handling
-					final LitecoinURI litecoinUri = new LitecoinURI(Constants.NETWORK_PARAMETERS, contents);
-					address = litecoinUri.getAddress();
-				}
-
-				// workaround for "IllegalStateException: Can not perform this action after onSaveInstanceState"
-				handler.postDelayed(new Runnable()
-				{
-					public void run()
-					{
-						EditAddressBookEntryFragment.edit(getFragmentManager(), address.toString());
-					}
-				}, 500);
-
-			}
-			catch (final AddressFormatException x)
-			{
-				activity.parseErrorDialog(contents);
-			}
-			catch (final LitecoinURIParseException x)
-			{
-				activity.parseErrorDialog(contents);
-			}
-		}
-	}
+                }
+                catch (final AddressFormatException x)
+                {
+                    activity.toast(R.string.send_coins_parse_address_error_msg);
+                }
+            }
+        }
+    }
 
 	@SuppressLint("InlinedApi")
 	@Override
@@ -212,8 +214,9 @@ public final class SendingAddressesFragment extends SherlockListFragment impleme
 
 	private void handleScan()
 	{
-		startActivityForResult(new Intent(activity, ScanActivity.class), REQUEST_CODE_SCAN);
-	}
+            IntentIntegrator integrator = new IntentIntegratorSupportV4(this);
+            integrator.initiateScan();
+    }
 
 	@Override
 	public void onListItemClick(final ListView l, final View v, final int position, final long id)

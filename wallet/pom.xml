@@ -74,10 +74,11 @@
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>android-integration</artifactId>
+            <classifier>supportv4</classifier>
             <version>2.2</version>
         </dependency>
 
-		<!-- org.slf4j.* -->
+        <!-- org.slf4j.* -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>

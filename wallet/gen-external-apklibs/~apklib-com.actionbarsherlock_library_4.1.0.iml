@@ -20,10 +20,10 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/com.actionbarsherlock_library_4.1.0">
       <sourceFolder url="file://$MODULE_DIR$/com.actionbarsherlock_library_4.1.0/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/com.actionbarsherlock_library_4.1.0/gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/com.actionbarsherlock_library_4.1.0/gen" isTestSource="false" generated="true" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="jdk" jdkName="Android 4.3 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Maven Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.android:android:4.0.1.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-logging:commons-logging:1.1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpclient:4.0.1" level="project" />

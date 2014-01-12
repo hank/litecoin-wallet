@@ -155,30 +155,4 @@ public final class SendCoinsActivity extends AbstractWalletActivity
 		sendCoinsFragment.update(receivingAddress, receivingLabel, amount);
 	}
 
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanResult != null) {
-            String contents = scanResult.getContents();
-            if(contents == null) return;
-            Log.d("Litecoin", "SCAN RESULT:" + contents);
-            try {
-                final LitecoinURI uri = new LitecoinURI(null, contents);
-                Log.d("Litecoin", "URI: " + uri.getAddress().toString() + " " + uri.getLabel() + " " + uri.getAmount());
-                updateSendCoinsFragment(uri.getAddress().toString(), uri.getLabel(), uri.getAmount());
-            }
-            catch (final LitecoinURIParseException x)
-            {
-                // Try prepending litecoin:
-                try {
-                    final LitecoinURI uri = new LitecoinURI(null, "litecoin:" + contents);
-                    Log.d("Litecoin", "URI: " + uri.getAddress().toString() + " " + uri.getLabel() + " " + uri.getAmount());
-                    updateSendCoinsFragment(uri.getAddress().toString(), uri.getLabel(), uri.getAmount());
-                }
-                catch (final LitecoinURIParseException y)
-                {
-                    parseErrorDialog(scanResult.getContents());
-                }
-            }
-        }
-    }
 }

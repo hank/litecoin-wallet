@@ -46,6 +46,8 @@ import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.text.style.TypefaceSpan;
 
+import android.util.Log;
+import android.widget.Toast;
 import com.google.litecoin.core.Address;
 import com.google.litecoin.core.AddressFormatException;
 import com.google.litecoin.core.DumpedPrivateKey;
@@ -56,6 +58,8 @@ import com.google.litecoin.core.Transaction;
 import com.google.litecoin.core.TransactionInput;
 import com.google.litecoin.core.TransactionOutput;
 import com.google.litecoin.core.Utils;
+import com.google.litecoin.uri.LitecoinURI;
+import com.google.litecoin.uri.LitecoinURIParseException;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -342,4 +346,27 @@ public class WalletUtils
 			x.printStackTrace();
 		}
 	}
+
+    public static LitecoinURI parseAddressString(String addressString) {
+        if (addressString == null) return null;
+        Log.d("Litecoin", "Parsing: " + addressString);
+        try {
+            final LitecoinURI uri = new LitecoinURI(Constants.NETWORK_PARAMETERS, addressString);
+            Log.d("Litecoin", "URI: " + uri.getAddress().toString() + " " + uri.getLabel() + " " + uri.getAmount());
+            return uri;
+        }
+        catch (final LitecoinURIParseException x)
+        {
+            // Try prepending litecoin:
+            try {
+                final LitecoinURI uri = new LitecoinURI(Constants.NETWORK_PARAMETERS, "litecoin:" + addressString);
+                Log.d("Litecoin", "URI: " + uri.getAddress().toString() + " " + uri.getLabel() + " " + uri.getAmount());
+                return uri;
+            }
+            catch (final LitecoinURIParseException y)
+            {
+                return null;
+            }
+        }
+    }
 }
