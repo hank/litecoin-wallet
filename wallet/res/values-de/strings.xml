@@ -166,7 +166,7 @@
 
 	<string name="peer_monitor_activity_title">Peer Monitor</string>
 
-	<string name="peer_list_fragment_empty">Keine Peers verbinden</string>
+	<string name="peer_list_fragment_empty">Keine Peers verbunden</string>
 
 	<string name="block_explorer_activity_title">Block Explorer</string>
 
